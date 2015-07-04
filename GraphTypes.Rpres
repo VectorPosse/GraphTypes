@@ -1,0 +1,206 @@
+Graph Types
+========================================================
+author: QUARC data visualization workshop
+date: July 7, 2015
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(xtable)
+library(MASS)
+library(dplyr)
+library(ggplot2)
+```
+
+
+Identifying variable types
+========================================================
+
+
+Identifying variable types
+========================================================
+transition: none
+
+* Categorical (nominal, qualitative, factor)
+
+Classifies data by category.
+
+> color, species, sex
+
+* Quantitative (numeric, interval/scale)
+
+Numerical measurements, usually with meaningful units.
+
+> height, GDP, score
+
+
+Identifying variable types
+========================================================
+transition: none
+
+**CAREFUL!**
+
+Numerical data is not always quantitative.
+
+> *Do you own a car?*
+>> 0 = "No", 1 = "Yes"
+
+> *What is your zip code?*
+
+
+Single variable
+========================================================
+type: section
+
+* Single variables generally won't answer very interesting questions by themselves.
+* Graphs of single variables are often valuable for exploring your data, but generally not suitable for inclusion in the final product.
+
+
+Single categorical variable
+========================================================
+
+
+Single categorical variable
+========================================================
+transition: none
+
+```{r}
+df_onecat <- birthwt %>%
+    transmute(Race = factor(race, labels = c("White", "Black", "Other"))) %>%
+    tbl_df()
+
+df_onecat
+```
+
+***
+
+Table
+
+```{r, results = 'asis'}
+df_onecat_table <- df_onecat %>%
+    group_by(Race) %>%
+    summarise(Count = n())
+
+df_onecat_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+```{r}
+df_onecat
+```
+
+***
+
+Bar chart
+
+```{r}
+ggplot(df_onecat, aes(x = Race)) +
+    geom_bar()
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+```{r}
+df_onecat
+```
+
+***
+
+Pie chart
+
+```{r}
+pie(df_onecat_table$Count, labels = df_onecat_table$Race)
+```
+
+**Danger! Danger!**
+
+Single categorical variable
+========================================================
+transition:none
+
+* Why do pie charts suck?
+
+> ["Pie Charts Are the Worst"](http://www.businessinsider.com/pie-charts-are-the-worst-2013-6)
+
+> ["Countdown of Top 10 Reasons to Never Ever Use a Pie Chart"](https://blogs.oracle.com/experience/entry/countdown_of_top_10_reasons_to_never_ever_use_a_pie_chart)
+
+> ["Save the Pies for Dessert"](http://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf)
+
+* And to be fair, one guy who defends pie charts:
+
+> ["Why Tufte is Flat-Out Wrong about Pie Charts"](http://speakingppt.com/2013/03/18/why-tufte-is-flat-out-wrong-about-pie-charts/)
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+```{r}
+df_onequant <- birthwt %>%
+    dplyr::select(birth_weight = bwt) %>%
+    tbl_df()
+
+df_onequant
+```
+
+***
+
+Histogram
+
+```{r}
+ggplot(df_onequant, aes(x = birth_weight)) +
+    geom_histogram(color = "black", fill = "white") +
+    xlab("Birth Weight (gm)")
+```
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+```{r}
+df_onequant
+```
+
+***
+
+Tabular summaries
+
+* Five-number summary (or use other quantiles)
+
+```{r, results = 'asis'}
+df_onequant_table <- df_onequant$birth_weight %>%
+    quantile() %>%
+    as.data.frame()
+
+colnames(df_onequant_table) <- c("Birth Weight (gm)")
+
+df_onequant_table <- df_onequant_table %>%
+    xtable() %>%
+    print(type = "html", comment = FALSE)
+```
+
+Single quantitative variable
+========================================================
+transition:none
+
+* Bunch of other types I don't prefer:
+
+> boxplot, stem-and-leaf plot, dotplot
