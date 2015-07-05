@@ -72,7 +72,7 @@ Mother's race (white, black, or other)
 ```
 Source: local data frame [189 x 1]
 
-    Race
+    race
 1  Black
 2  Other
 3  White
@@ -93,7 +93,7 @@ transition: none
 * Frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 22:51:20 2015 -->
+<!-- Sat Jul 04 23:40:51 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -127,7 +127,7 @@ transition:none
 * Relative frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 22:51:20 2015 -->
+<!-- Sat Jul 04 23:40:51 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -168,18 +168,18 @@ Infant birth weight in grams
 ```
 Source: local data frame [189 x 1]
 
-   birth_weight
-1          2523
-2          2551
-3          2557
-4          2594
-5          2600
-6          2622
-7          2637
-8          2637
-9          2663
-10         2665
-..          ...
+    bwt
+1  2523
+2  2551
+3  2557
+4  2594
+5  2600
+6  2622
+7  2637
+8  2637
+9  2663
+10 2665
+..  ...
 ```
 
 
@@ -242,13 +242,13 @@ Two categorical variables
 ========================================================
 transition: none
 
-Birth weight and the number of previous premature labors.
+Mother's race and the number of previous premature labors.
 
 
 ```
 Source: local data frame [189 x 2]
 
-    Race Ptl
+    race ptl
 1  Black   0
 2  Other   0
 3  White   0
@@ -279,3 +279,61 @@ transition: none
 * Side-by-side bar chart (better)
 
 ![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png) 
+
+
+One categorical and one quatitative variable
+========================================================
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+Mother's race and infant birth weight in grams
+
+
+```
+Source: local data frame [189 x 2]
+
+    race  bwt
+1  Black 2523
+2  Other 2551
+3  White 2557
+4  White 2594
+5  White 2600
+6  Other 2622
+7  White 2637
+8  Other 2637
+9  White 2663
+10 White 2665
+..   ...  ...
+```
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Side-by-side boxplot
+
+![plot of chunk unnamed-chunk-14](GraphTypes-figure/unnamed-chunk-14-1.png) 
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Stacked histogram (okay)
+
+![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Stacked histogram (better)
+
+![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png) 
+
+

@@ -79,7 +79,7 @@ Mother's race (white, black, or other)
 
 ```{r}
 df_onecat <- birthwt %>%
-    transmute(Race = factor(race, labels = c("White", "Black", "Other"))) %>%
+    transmute(race = factor(race, labels = c("White", "Black", "Other"))) %>%
     tbl_df()
 
 df_onecat
@@ -93,8 +93,10 @@ transition: none
 
 ```{r, results = 'asis'}
 df_onecat_table <- df_onecat %>%
-    group_by(Race) %>%
-    summarise(Count = n())
+    group_by(race) %>%
+    summarise(count = n())
+
+colnames(df_onecat_table) <- c("Race", "Count")
 
 df_onecat_table %>%
     xtable() %>%
@@ -109,8 +111,10 @@ transition:none
 * Bar chart
 
 ```{r}
-ggplot(df_onecat, aes(x = Race)) +
-    geom_bar()
+ggplot(df_onecat, aes(x = race)) +
+    geom_bar() +
+    xlab("Race") +
+    ylab("Count")
 ```
 
 
@@ -133,10 +137,11 @@ transition:none
 
 ```{r, results = 'asis'}
 df_onecat_table2 <- df_onecat %>%
-    group_by(Race) %>%
-    summarise(Count = n()) %>%
-    mutate(Percent = Count / sum(Count))
+    group_by(race) %>%
+    summarise(count = n()) %>%
+    mutate(Percent = count / sum(count))
 
+colnames(df_onecat_table2) <- c("Race", "Count", "Percent")
 df_onecat_table2 %>%
     xtable() %>%
     print(type = "html", include.rownames = FALSE)
@@ -173,7 +178,7 @@ Infant birth weight in grams
 
 ```{r}
 df_onequant <- birthwt %>%
-    dplyr::select(birth_weight = bwt) %>%
+    transmute(bwt = bwt) %>%
     tbl_df()
 
 df_onequant
@@ -187,9 +192,10 @@ transition:none
 * Histogram
 
 ```{r}
-ggplot(df_onequant, aes(x = birth_weight)) +
+ggplot(df_onequant, aes(x = bwt)) +
     geom_histogram(color = "black", fill = "white") +
-    xlab("Birth Weight (gm)")
+    xlab("Birth Weight (gm)") +
+    ylab("Count")
 ```
 
 
@@ -202,7 +208,7 @@ transition:none
 ("Five-number summary" or other quantiles)
 
 ```{r, results = 'asis'}
-df_onequant_table <- df_onequant$birth_weight %>%
+df_onequant_table <- df_onequant$bwt %>%
     quantile(probs = c(0, 0.05, 0.25, 0.5, 0.75, 0.95, 1)) %>%
     as.data.frame()
 
@@ -244,12 +250,12 @@ Two categorical variables
 ========================================================
 transition: none
 
-Birth weight and the number of previous premature labors.
+Mother's race and the number of previous premature labors.
 
 ```{r}
 df_twocat <- birthwt %>%
-    transmute(Race = factor(race, labels = c("White", "Black", "Other")),
-              Ptl = factor(ptl))  %>%
+    transmute(race = factor(race, labels = c("White", "Black", "Other")),
+              ptl = factor(ptl))  %>%
     tbl_df()
 
 df_twocat
@@ -264,22 +270,25 @@ transition: none
 
 ```{r}
 df_twocat_summ <- df_twocat %>%
-    group_by(Race, Ptl) %>%
-    summarise(Count = n()) %>%
-    mutate(Percentage = Count / sum(Count)) %>%
+    group_by(race, ptl) %>%
+    summarise(count = n()) %>%
+    mutate(percentage = count / sum(count)) %>%
     tbl_df()
 
+## Add zero counts to missing categories to fix spacing in bar graph.
 
-df_twocat_fix <- data_frame(Race = c("Black", "Black", "Other"),
-                            Ptl = c(2, 3, 3),
-                            Count = c(0, 0, 0),
-                            Percentage = c(0, 0, 0))
+df_twocat_fix <- data_frame(race = c("Black", "Black", "Other"),
+                            ptl = c(2, 3, 3),
+                            count = c(0, 0, 0),
+                            percentage = c(0, 0, 0))
 
 df_twocat_summ <- rbind(df_twocat_summ, df_twocat_fix)
 
-ggplot(df_twocat_summ, aes(x = Race, y = Count, fill = Ptl)) +
+ggplot(df_twocat_summ, aes(x = race, y = count, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
-    scale_fill_discrete(name = "Premature labors")
+    scale_fill_discrete(name = "Premature labors") +
+    xlab("Race") +
+    ylab("Count")
 ```
 
 
@@ -290,7 +299,80 @@ transition: none
 * Side-by-side bar chart (better)
 
 ```{r}
-ggplot(df_twocat_summ, aes(x = Race, y = Percentage, fill = Ptl)) +
+ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
-    scale_fill_discrete(name = "Premature labors")
+    scale_fill_discrete(name = "Premature labors") +
+    xlab("Race") +
+    ylab("Percent")
 ```
+
+
+One categorical and one quatitative variable
+========================================================
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+Mother's race and infant birth weight in grams
+
+```{r}
+df_onecat_onequant <- birthwt %>%
+    transmute(race = factor(race, labels = c("White", "Black", "Other")),
+              bwt = bwt) %>%
+    tbl_df()
+
+df_onecat_onequant
+```
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Side-by-side boxplot
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = race, y = bwt)) +
+    geom_boxplot() +
+    xlab("Race") +
+    ylab("Birth weight (gm)")
+```
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Stacked histogram (okay)
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = bwt)) +
+    geom_histogram(binwidth = 200,
+                   color = "black",
+                   fill = "white") +
+    facet_grid(race ~ .) +
+    xlab("Birth weight (gm)") +
+    ylab("Count")
+```
+
+
+One categorical and one quatitative variable
+========================================================
+transition: none
+
+* Stacked histogram (better)
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = bwt)) +
+    geom_histogram(aes(y=(..density..)*200),
+                   binwidth = 200,
+                   color = "black",
+                   fill = "white") +
+    facet_grid(race ~ .) +
+    xlab("Birth weight (gm)") +
+    ylab("Percent")
+```
+
+
