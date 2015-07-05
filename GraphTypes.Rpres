@@ -51,6 +51,13 @@ Numerical data is not always quantitative.
 
 > *What is your zip code?*
 
+Data set
+========================================================
+
+Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
+
+189 women measured on 10 variables.
+
 
 Single variable
 ========================================================
@@ -68,6 +75,8 @@ Single categorical variable
 ========================================================
 transition: none
 
+Mother's race (white, black, or other)
+
 ```{r}
 df_onecat <- birthwt %>%
     transmute(Race = factor(race, labels = c("White", "Black", "Other"))) %>%
@@ -80,7 +89,7 @@ Single categorical variable
 ========================================================
 transition: none
 
-Frequency table
+* Frequency table
 
 ```{r, results = 'asis'}
 df_onecat_table <- df_onecat %>%
@@ -97,7 +106,7 @@ Single categorical variable
 ========================================================
 transition:none
 
-Bar chart
+* Bar chart
 
 ```{r}
 ggplot(df_onecat, aes(x = Race)) +
@@ -109,7 +118,7 @@ Single categorical variable
 ========================================================
 transition:none
 
-<s>Pie chart</s> **Danger! Danger!**
+* <s>Pie chart</s> **Danger! Danger!**
 
 ```{r}
 pie(df_onecat_table$Count, labels = df_onecat_table$Race)
@@ -120,7 +129,7 @@ Single categorical variable
 ========================================================
 transition:none
 
-Relative frequency table
+* Relative frequency table
 
 ```{r, results = 'asis'}
 df_onecat_table2 <- df_onecat %>%
@@ -160,6 +169,8 @@ Single quantitative variable
 ========================================================
 transition:none
 
+Infant birth weight in grams
+
 ```{r}
 df_onequant <- birthwt %>%
     dplyr::select(birth_weight = bwt) %>%
@@ -173,7 +184,7 @@ Single quantitative variable
 ========================================================
 transition:none
 
-Histogram
+* Histogram
 
 ```{r}
 ggplot(df_onequant, aes(x = birth_weight)) +
@@ -186,7 +197,7 @@ Single quantitative variable
 ========================================================
 transition:none
 
-Tabular summaries
+* Tabular summaries
 
 ("Five-number summary" or other quantiles)
 
@@ -233,6 +244,8 @@ Two categorical variables
 ========================================================
 transition: none
 
+Birth weight and the number of previous premature labors.
+
 ```{r}
 df_twocat <- birthwt %>%
     transmute(Race = factor(race, labels = c("White", "Black", "Other")),
@@ -246,23 +259,38 @@ df_twocat
 Two categorical variables
 ========================================================
 transition: none
-Side-by-side bar chart
+
+* Side-by-side bar chart (okay)
 
 ```{r}
-df_twocat <- df_twocat %>%
+df_twocat_summ <- df_twocat %>%
     group_by(Race, Ptl) %>%
-    summarise(n = n()) %>%
-    mutate(Percentage = n / sum(n)) %>%
+    summarise(Count = n()) %>%
+    mutate(Percentage = Count / sum(Count)) %>%
     tbl_df()
 
 
 df_twocat_fix <- data_frame(Race = c("Black", "Black", "Other"),
                             Ptl = c(2, 3, 3),
-                            n = c(0, 0, 0),
+                            Count = c(0, 0, 0),
                             Percentage = c(0, 0, 0))
 
-df_twocat <- rbind(df_twocat, df_twocat_fix)
+df_twocat_summ <- rbind(df_twocat_summ, df_twocat_fix)
 
-ggplot(df_twocat, aes(x = Race, y = Percentage, fill = Ptl)) +
-    geom_bar(stat = "identity", position = "dodge")
+ggplot(df_twocat_summ, aes(x = Race, y = Count, fill = Ptl)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    scale_fill_discrete(name = "Premature labors")
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+
+* Side-by-side bar chart (better)
+
+```{r}
+ggplot(df_twocat_summ, aes(x = Race, y = Percentage, fill = Ptl)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    scale_fill_discrete(name = "Premature labors")
 ```

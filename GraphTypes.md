@@ -42,6 +42,13 @@ Numerical data is not always quantitative.
 
 > *What is your zip code?*
 
+Data set
+========================================================
+
+Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
+
+189 women measured on 10 variables.
+
 
 Single variable
 ========================================================
@@ -58,6 +65,8 @@ Single categorical variable
 Single categorical variable
 ========================================================
 transition: none
+
+Mother's race (white, black, or other)
 
 
 ```
@@ -81,10 +90,10 @@ Single categorical variable
 ========================================================
 transition: none
 
-Frequency table
+* Frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 21:07:37 2015 -->
+<!-- Sat Jul 04 22:51:20 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -97,7 +106,7 @@ Single categorical variable
 ========================================================
 transition:none
 
-Bar chart
+* Bar chart
 
 ![plot of chunk unnamed-chunk-4](GraphTypes-figure/unnamed-chunk-4-1.png) 
 
@@ -106,7 +115,7 @@ Single categorical variable
 ========================================================
 transition:none
 
-<s>Pie chart</s> **Danger! Danger!**
+* <s>Pie chart</s> **Danger! Danger!**
 
 ![plot of chunk unnamed-chunk-5](GraphTypes-figure/unnamed-chunk-5-1.png) 
 
@@ -115,10 +124,10 @@ Single categorical variable
 ========================================================
 transition:none
 
-Relative frequency table
+* Relative frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 21:07:37 2015 -->
+<!-- Sat Jul 04 22:51:20 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -153,6 +162,8 @@ Single quantitative variable
 ========================================================
 transition:none
 
+Infant birth weight in grams
+
 
 ```
 Source: local data frame [189 x 1]
@@ -176,7 +187,7 @@ Single quantitative variable
 ========================================================
 transition:none
 
-Histogram
+* Histogram
 
 ![plot of chunk unnamed-chunk-8](GraphTypes-figure/unnamed-chunk-8-1.png) 
 
@@ -185,7 +196,7 @@ Single quantitative variable
 ========================================================
 transition:none
 
-Tabular summaries
+* Tabular summaries
 
 ("Five-number summary" or other quantiles)
 
@@ -231,6 +242,8 @@ Two categorical variables
 ========================================================
 transition: none
 
+Birth weight and the number of previous premature labors.
+
 
 ```
 Source: local data frame [189 x 2]
@@ -253,6 +266,16 @@ Source: local data frame [189 x 2]
 Two categorical variables
 ========================================================
 transition: none
-Side-by-side bar chart
+
+* Side-by-side bar chart (okay)
 
 ![plot of chunk unnamed-chunk-11](GraphTypes-figure/unnamed-chunk-11-1.png) 
+
+
+Two categorical variables
+========================================================
+transition: none
+
+* Side-by-side bar chart (better)
+
+![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png) 
