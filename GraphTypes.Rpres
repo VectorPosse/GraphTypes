@@ -13,6 +13,7 @@ library(xtable)
 library(MASS)
 library(dplyr)
 library(ggplot2)
+library(scales)
 ```
 
 
@@ -55,7 +56,7 @@ Single variable
 ========================================================
 type: section
 
-* Single variables generally won't answer very interesting questions by themselves.
+* Single variables usually won't answer very interesting questions by themselves.
 * Graphs of single variables are often valuable for exploring your data, but generally not suitable for inclusion in the final product.
 
 
@@ -75,9 +76,11 @@ df_onecat <- birthwt %>%
 df_onecat
 ```
 
-***
+Single categorical variable
+========================================================
+transition: none
 
-Table
+Frequency table
 
 ```{r, results = 'asis'}
 df_onecat_table <- df_onecat %>%
@@ -94,12 +97,6 @@ Single categorical variable
 ========================================================
 transition:none
 
-```{r}
-df_onecat
-```
-
-***
-
 Bar chart
 
 ```{r}
@@ -112,19 +109,30 @@ Single categorical variable
 ========================================================
 transition:none
 
-```{r}
-df_onecat
-```
-
-***
-
-Pie chart
+<s>Pie chart</s> **Danger! Danger!**
 
 ```{r}
 pie(df_onecat_table$Count, labels = df_onecat_table$Race)
 ```
 
-**Danger! Danger!**
+
+Single categorical variable
+========================================================
+transition:none
+
+Relative frequency table
+
+```{r, results = 'asis'}
+df_onecat_table2 <- df_onecat %>%
+    group_by(Race) %>%
+    summarise(Count = n()) %>%
+    mutate(Percent = Count / sum(Count))
+
+df_onecat_table2 %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
 
 Single categorical variable
 ========================================================
@@ -160,7 +168,10 @@ df_onequant <- birthwt %>%
 df_onequant
 ```
 
-***
+
+Single quantitative variable
+========================================================
+transition:none
 
 Histogram
 
@@ -175,32 +186,83 @@ Single quantitative variable
 ========================================================
 transition:none
 
-```{r}
-df_onequant
-```
-
-***
-
 Tabular summaries
 
-* Five-number summary (or use other quantiles)
+("Five-number summary" or other quantiles)
 
 ```{r, results = 'asis'}
 df_onequant_table <- df_onequant$birth_weight %>%
-    quantile() %>%
+    quantile(probs = c(0, 0.05, 0.25, 0.5, 0.75, 0.95, 1)) %>%
     as.data.frame()
 
 colnames(df_onequant_table) <- c("Birth Weight (gm)")
 
 df_onequant_table <- df_onequant_table %>%
-    xtable() %>%
+    xtable(digits = 0) %>%
     print(type = "html", comment = FALSE)
 ```
+
 
 Single quantitative variable
 ========================================================
 transition:none
 
-* Bunch of other types I don't prefer:
+* A bunch of other types I don't prefer:
 
 > boxplot, stem-and-leaf plot, dotplot
+
+
+Multiple variables
+========================================================
+type: section
+
+There are at least six elements of a plot that can be assigned to variables:
+
+* x-axis
+* y-axis
+* facets
+* color/fill
+* size
+* shape (e.g., dots vs crosses, solid vs dashed lines, etc.)
+
+Two categorical variables
+========================================================
+
+
+Two categorical variables
+========================================================
+transition: none
+
+```{r}
+df_twocat <- birthwt %>%
+    transmute(Race = factor(race, labels = c("White", "Black", "Other")),
+              Ptl = factor(ptl))  %>%
+    tbl_df()
+
+df_twocat
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+Side-by-side bar chart
+
+```{r}
+df_twocat <- df_twocat %>%
+    group_by(Race, Ptl) %>%
+    summarise(n = n()) %>%
+    mutate(Percentage = n / sum(n)) %>%
+    tbl_df()
+
+
+df_twocat_fix <- data_frame(Race = c("Black", "Black", "Other"),
+                            Ptl = c(2, 3, 3),
+                            n = c(0, 0, 0),
+                            Percentage = c(0, 0, 0))
+
+df_twocat <- rbind(df_twocat, df_twocat_fix)
+
+ggplot(df_twocat, aes(x = Race, y = Percentage, fill = Ptl)) +
+    geom_bar(stat = "identity", position = "dodge")
+```
