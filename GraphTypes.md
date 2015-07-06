@@ -22,7 +22,7 @@ Classifies data by category.
 
 > color, species, sex
 
-* Quantitative (numeric, interval/scale)
+* Quantitative (numeric, scale, interval/ratio)
 
 Numerical measurements, usually with meaningful units.
 
@@ -35,7 +35,7 @@ transition: none
 
 **CAREFUL!**
 
-Numerical data is not always quantitative.
+Numbers are not always quantitative.
 
 > *Do you own a car?*
 >> 0 = "No", 1 = "Yes"
@@ -93,7 +93,7 @@ transition: none
 * Frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 23:40:51 2015 -->
+<!-- Sun Jul 05 18:48:13 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -127,7 +127,7 @@ transition:none
 * Relative frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sat Jul 04 23:40:51 2015 -->
+<!-- Sun Jul 05 18:48:13 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -281,11 +281,11 @@ transition: none
 ![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png) 
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -310,7 +310,7 @@ Source: local data frame [189 x 2]
 ```
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -319,7 +319,7 @@ transition: none
 ![plot of chunk unnamed-chunk-14](GraphTypes-figure/unnamed-chunk-14-1.png) 
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -328,7 +328,7 @@ transition: none
 ![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -337,3 +337,52 @@ transition: none
 ![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png) 
 
 
+Two quantitative variables
+========================================================
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+Mother's age and infant birth weight
+
+
+```
+Source: local data frame [189 x 2]
+
+   age  bwt
+1   19 2523
+2   33 2551
+3   20 2557
+4   21 2594
+5   18 2600
+6   21 2622
+7   22 2637
+8   17 2637
+9   29 2663
+10  26 2665
+.. ...  ...
+```
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+* Scatterplot
+
+![plot of chunk unnamed-chunk-18](GraphTypes-figure/unnamed-chunk-18-1.png) 
+
+
+Three or more variables
+========================================================
+
+![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
+
+
+Three or more variables
+========================================================
+transition: none
+
+![plot of chunk unnamed-chunk-20](GraphTypes-figure/unnamed-chunk-20-1.png) 

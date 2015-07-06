@@ -14,6 +14,7 @@ library(MASS)
 library(dplyr)
 library(ggplot2)
 library(scales)
+library(grid)
 ```
 
 
@@ -31,7 +32,7 @@ Classifies data by category.
 
 > color, species, sex
 
-* Quantitative (numeric, interval/scale)
+* Quantitative (numeric, scale, interval/ratio)
 
 Numerical measurements, usually with meaningful units.
 
@@ -44,7 +45,7 @@ transition: none
 
 **CAREFUL!**
 
-Numerical data is not always quantitative.
+Numbers are not always quantitative.
 
 > *Do you own a car?*
 >> 0 = "No", 1 = "Yes"
@@ -79,7 +80,8 @@ Mother's race (white, black, or other)
 
 ```{r}
 df_onecat <- birthwt %>%
-    transmute(race = factor(race, labels = c("White", "Black", "Other"))) %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other"))) %>%
     tbl_df()
 
 df_onecat
@@ -114,7 +116,11 @@ transition:none
 ggplot(df_onecat, aes(x = race)) +
     geom_bar() +
     xlab("Race") +
-    ylab("Count")
+    ylab("Count") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
 ```
 
 
@@ -125,7 +131,7 @@ transition:none
 * <s>Pie chart</s> **Danger! Danger!**
 
 ```{r}
-pie(df_onecat_table$Count, labels = df_onecat_table$Race)
+pie(df_onecat_table$Count, labels = df_onecat_table$Race, cex = 2)
 ```
 
 
@@ -195,7 +201,11 @@ transition:none
 ggplot(df_onequant, aes(x = bwt)) +
     geom_histogram(color = "black", fill = "white") +
     xlab("Birth Weight (gm)") +
-    ylab("Count")
+    ylab("Count") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
 ```
 
 
@@ -254,7 +264,8 @@ Mother's race and the number of previous premature labors.
 
 ```{r}
 df_twocat <- birthwt %>%
-    transmute(race = factor(race, labels = c("White", "Black", "Other")),
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
               ptl = factor(ptl))  %>%
     tbl_df()
 
@@ -288,7 +299,13 @@ ggplot(df_twocat_summ, aes(x = race, y = count, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
     scale_fill_discrete(name = "Premature labors") +
     xlab("Race") +
-    ylab("Count")
+    ylab("Count") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24)) +
+    theme(legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16))
 ```
 
 
@@ -303,15 +320,21 @@ ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
     scale_fill_discrete(name = "Premature labors") +
     xlab("Race") +
-    ylab("Percent")
+    ylab("Percent") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24)) +
+    theme(legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16))
 ```
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -319,7 +342,8 @@ Mother's race and infant birth weight in grams
 
 ```{r}
 df_onecat_onequant <- birthwt %>%
-    transmute(race = factor(race, labels = c("White", "Black", "Other")),
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
               bwt = bwt) %>%
     tbl_df()
 
@@ -327,7 +351,7 @@ df_onecat_onequant
 ```
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -337,11 +361,15 @@ transition: none
 ggplot(df_onecat_onequant, aes(x = race, y = bwt)) +
     geom_boxplot() +
     xlab("Race") +
-    ylab("Birth weight (gm)")
+    ylab("Birth Weight (gm)\n") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(vjust = 1, size = 32),
+          axis.text.y  = element_text(size = 24))
 ```
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -353,12 +381,18 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
-    xlab("Birth weight (gm)") +
-    ylab("Count")
+    xlab("Birth Weight (gm)") +
+    ylab("Count") +
+    theme(strip.text.y = element_text(size = 24)) +
+    theme(panel.margin = unit(18, "points")) +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
 ```
 
 
-One categorical and one quatitative variable
+One categorical and one quantitative variable
 ========================================================
 transition: none
 
@@ -371,8 +405,95 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
-    xlab("Birth weight (gm)") +
-    ylab("Percent")
+    xlab("Birth Weight (gm)") +
+    ylab("Percent") +
+    theme(strip.text.y = element_text(size = 24)) +
+    theme(panel.margin = unit(18, "points")) +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
 ```
 
 
+Two quantitative variables
+========================================================
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+Mother's age and infant birth weight
+
+```{r}
+df_twoquant <- birthwt %>%
+    transmute(age = age, bwt = bwt) %>%
+    tbl_df()
+
+df_twoquant
+```
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+* Scatterplot
+
+```{r}
+ggplot(df_twoquant, aes(x = age, y = bwt)) +
+    geom_point() +
+    xlab("Age") +
+    ylab("Birth Weight (gm)\n") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
+```
+
+
+Three or more variables
+========================================================
+
+```{r}
+df_mult <- birthwt %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
+              bwt = bwt,
+              smoke = factor(smoke, labels = c("No", "Yes")),
+              age = age)
+
+ggplot(df_mult, aes(x = race, y = bwt, fill = smoke)) +
+    geom_boxplot() +
+    xlab("Race") +
+    ylab("Birth Weight (gm)\n") +
+    scale_fill_discrete(name = "Smoke?") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(vjust = 1, size = 32),
+          axis.text.y  = element_text(size = 24)) +
+    theme(legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16))
+```
+
+
+Three or more variables
+========================================================
+transition: none
+
+```{r, fig.width = 15}
+ggplot(df_mult, aes(x = age, y = bwt, color = smoke)) +
+    geom_point(size = 5) +
+    facet_grid(. ~ race) +
+    xlab("Age") +
+    ylab("Birth Weight (gm)\n") +
+    scale_color_discrete(name = "Smoke?") +
+    theme(strip.text.x = element_text(size = 24)) +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24)) +
+    theme(legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16))
+```
