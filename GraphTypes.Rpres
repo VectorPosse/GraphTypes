@@ -120,7 +120,7 @@ ggplot(df_onecat, aes(x = race)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+          axis.text.y  = element_text(size = 16))
 ```
 
 
@@ -205,7 +205,7 @@ ggplot(df_onequant, aes(x = bwt)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+          axis.text.y  = element_text(size = 16))
 ```
 
 
@@ -303,7 +303,7 @@ ggplot(df_twocat_summ, aes(x = race, y = count, fill = ptl)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24)) +
+          axis.text.y  = element_text(size = 16)) +
     theme(legend.title = element_text(size = 16),
           legend.text = element_text(size = 16))
 ```
@@ -324,7 +324,7 @@ ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24)) +
+          axis.text.y  = element_text(size = 16)) +
     theme(legend.title = element_text(size = 16),
           legend.text = element_text(size = 16))
 ```
@@ -365,7 +365,7 @@ ggplot(df_onecat_onequant, aes(x = race, y = bwt)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(vjust = 1, size = 32),
-          axis.text.y  = element_text(size = 24))
+          axis.text.y  = element_text(size = 16))
 ```
 
 
@@ -388,7 +388,7 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+          axis.text.y  = element_text(size = 16))
 ```
 
 
@@ -412,7 +412,7 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+          axis.text.y  = element_text(size = 16))
 ```
 
 
@@ -472,7 +472,7 @@ ggplot(df_mult, aes(x = race, y = bwt, fill = smoke)) +
     theme(axis.title.x = element_text(size = 32),
           axis.text.x  = element_text(size = 24)) +
     theme(axis.title.y = element_text(vjust = 1, size = 32),
-          axis.text.y  = element_text(size = 24)) +
+          axis.text.y  = element_text(size = 16)) +
     theme(legend.title = element_text(size = 16),
           legend.text = element_text(size = 16))
 ```
