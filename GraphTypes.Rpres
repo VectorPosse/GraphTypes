@@ -330,6 +330,27 @@ ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
 ```
 
 
+Two categorical variables
+========================================================
+transition: none
+
+* <s>Stacked bar chart</s> **Danger! Danger!**
+
+```{r}
+ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
+    geom_bar(stat = "identity") +
+    scale_fill_discrete(name = "Premature labors") +
+    xlab("Race") +
+    ylab("Percent") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 16)) +
+    theme(legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16))
+```
+
+
 One categorical and one quantitative variable
 ========================================================
 
@@ -452,6 +473,23 @@ ggplot(df_twoquant, aes(x = age, y = bwt)) +
           axis.text.y  = element_text(size = 24))
 ```
 
+
+Two quantitative variables
+========================================================
+transition: none
+
+* If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
+
+```{r, fig.width = 10}
+library(ggfortify)
+autoplot(co2) +
+    xlab("Year") +
+    ylab("Atmospheric CO2 (ppm)\n") +
+    theme(axis.title.x = element_text(size = 32),
+          axis.text.x  = element_text(size = 24)) +
+    theme(axis.title.y = element_text(size = 32),
+          axis.text.y  = element_text(size = 24))
+```
 
 Three or more variables
 ========================================================

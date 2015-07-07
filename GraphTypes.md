@@ -93,7 +93,7 @@ transition: none
 * Frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sun Jul 05 20:30:37 2015 -->
+<!-- Mon Jul 06 17:43:25 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -127,7 +127,7 @@ transition:none
 * Relative frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sun Jul 05 20:30:37 2015 -->
+<!-- Mon Jul 06 17:43:25 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -281,6 +281,15 @@ transition: none
 ![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png) 
 
 
+Two categorical variables
+========================================================
+transition: none
+
+* <s>Stacked bar chart</s> **Danger! Danger!**
+
+![plot of chunk unnamed-chunk-13](GraphTypes-figure/unnamed-chunk-13-1.png) 
+
+
 One categorical and one quantitative variable
 ========================================================
 
@@ -316,7 +325,7 @@ transition: none
 
 * Side-by-side boxplot
 
-![plot of chunk unnamed-chunk-14](GraphTypes-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
 
 
 One categorical and one quantitative variable
@@ -325,7 +334,7 @@ transition: none
 
 * Stacked histogram (okay)
 
-![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png) 
 
 
 One categorical and one quantitative variable
@@ -334,7 +343,7 @@ transition: none
 
 * Stacked histogram (better)
 
-![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-17](GraphTypes-figure/unnamed-chunk-17-1.png) 
 
 
 Two quantitative variables
@@ -372,17 +381,25 @@ transition: none
 
 * Scatterplot
 
-![plot of chunk unnamed-chunk-18](GraphTypes-figure/unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
 
+
+Two quantitative variables
+========================================================
+transition: none
+
+* If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
+
+![plot of chunk unnamed-chunk-20](GraphTypes-figure/unnamed-chunk-20-1.png) 
 
 Three or more variables
 ========================================================
 
-![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
+![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png) 
 
 
 Three or more variables
 ========================================================
 transition: none
 
-![plot of chunk unnamed-chunk-20](GraphTypes-figure/unnamed-chunk-20-1.png) 
+![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png) 

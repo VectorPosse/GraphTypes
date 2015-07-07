@@ -12,3 +12,4 @@ vignettes/*.pdf
 GraphTypes-figure/
 GraphTypes.Rproj
 *.Rproj
+*.html
