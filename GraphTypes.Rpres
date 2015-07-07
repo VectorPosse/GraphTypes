@@ -1,3 +1,10 @@
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+
 Graph Types
 ========================================================
 author: QUARC data visualization workshop
@@ -15,6 +22,8 @@ library(dplyr)
 library(ggplot2)
 library(scales)
 library(grid)
+library(gmodels)
+library(ggfortify)
 ```
 
 
@@ -148,6 +157,7 @@ df_onecat_table2 <- df_onecat %>%
     mutate(Percent = count / sum(count))
 
 colnames(df_onecat_table2) <- c("Race", "Count", "Percent")
+
 df_onecat_table2 %>%
     xtable() %>%
     print(type = "html", include.rownames = FALSE)
@@ -270,6 +280,37 @@ df_twocat <- birthwt %>%
     tbl_df()
 
 df_twocat
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+class: small-code
+
+* Contingency table (okay)
+
+```{r}
+Race <- df_twocat$race
+`Premature labors` <- df_twocat$ptl
+
+CrossTable(x = Race, y = `Premature labors`,
+           prop.r = FALSE, prop.c = FALSE, prop.t = FALSE, prop.chisq = FALSE,
+           format = "SAS")
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+class: small-code
+
+* Contingency table (better)
+
+```{r}
+CrossTable(x = Race, y = `Premature labors`,
+           prop.r = TRUE, prop.c = FALSE, prop.t = FALSE, prop.chisq = FALSE,
+           format = "SAS")
 ```
 
 
@@ -481,7 +522,6 @@ transition: none
 * If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
 
 ```{r, fig.width = 10}
-library(ggfortify)
 autoplot(co2) +
     xlab("Year") +
     ylab("Atmospheric CO2 (ppm)\n") +

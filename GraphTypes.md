@@ -1,3 +1,10 @@
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+
 Graph Types
 ========================================================
 author: QUARC data visualization workshop
@@ -93,7 +100,7 @@ transition: none
 * Frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Mon Jul 06 17:43:25 2015 -->
+<!-- Mon Jul 06 19:44:51 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -127,7 +134,7 @@ transition:none
 * Relative frequency table
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Mon Jul 06 17:43:25 2015 -->
+<!-- Mon Jul 06 19:44:51 2015 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -266,10 +273,86 @@ Source: local data frame [189 x 2]
 Two categorical variables
 ========================================================
 transition: none
+class: small-code
+
+* Contingency table (okay)
+
+
+```
+
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+|-------------------------|
+
+ 
+Total Observations in Table:  189 
+
+ 
+             | Premature labors 
+        Race |         0 |         1 |         2 |         3 | Row Total | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       White |        82 |        10 |         3 |         1 |        96 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       Black |        22 |         4 |         0 |         0 |        26 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       Other |        55 |        10 |         2 |         0 |        67 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+Column Total |       159 |        24 |         5 |         1 |       189 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+
+ 
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+class: small-code
+
+* Contingency table (better)
+
+
+```
+
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+|           N / Row Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  189 
+
+ 
+             | Premature labors 
+        Race |         0 |         1 |         2 |         3 | Row Total | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       White |        82 |        10 |         3 |         1 |        96 | 
+             |     0.854 |     0.104 |     0.031 |     0.010 |     0.508 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       Black |        22 |         4 |         0 |         0 |        26 | 
+             |     0.846 |     0.154 |     0.000 |     0.000 |     0.138 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+       Other |        55 |        10 |         2 |         0 |        67 | 
+             |     0.821 |     0.149 |     0.030 |     0.000 |     0.354 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+Column Total |       159 |        24 |         5 |         1 |       189 | 
+-------------|-----------|-----------|-----------|-----------|-----------|
+
+ 
+```
+
+
+Two categorical variables
+========================================================
+transition: none
 
 * Side-by-side bar chart (okay)
 
-![plot of chunk unnamed-chunk-11](GraphTypes-figure/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-13](GraphTypes-figure/unnamed-chunk-13-1.png) 
 
 
 Two categorical variables
@@ -278,7 +361,7 @@ transition: none
 
 * Side-by-side bar chart (better)
 
-![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-14](GraphTypes-figure/unnamed-chunk-14-1.png) 
 
 
 Two categorical variables
@@ -287,7 +370,7 @@ transition: none
 
 * <s>Stacked bar chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-13](GraphTypes-figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
 
 
 One categorical and one quantitative variable
@@ -325,7 +408,7 @@ transition: none
 
 * Side-by-side boxplot
 
-![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-17](GraphTypes-figure/unnamed-chunk-17-1.png) 
 
 
 One categorical and one quantitative variable
@@ -334,7 +417,7 @@ transition: none
 
 * Stacked histogram (okay)
 
-![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-18](GraphTypes-figure/unnamed-chunk-18-1.png) 
 
 
 One categorical and one quantitative variable
@@ -343,7 +426,7 @@ transition: none
 
 * Stacked histogram (better)
 
-![plot of chunk unnamed-chunk-17](GraphTypes-figure/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
 
 
 Two quantitative variables
@@ -381,7 +464,7 @@ transition: none
 
 * Scatterplot
 
-![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
+![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png) 
 
 
 Two quantitative variables
@@ -390,16 +473,16 @@ transition: none
 
 * If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
 
-![plot of chunk unnamed-chunk-20](GraphTypes-figure/unnamed-chunk-20-1.png) 
+![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png) 
 
 Three or more variables
 ========================================================
 
-![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png) 
+![plot of chunk unnamed-chunk-23](GraphTypes-figure/unnamed-chunk-23-1.png) 
 
 
 Three or more variables
 ========================================================
 transition: none
 
-![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png) 
+![plot of chunk unnamed-chunk-24](GraphTypes-figure/unnamed-chunk-24-1.png) 
