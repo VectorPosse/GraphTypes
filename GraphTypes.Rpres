@@ -365,7 +365,8 @@ transition:none
 
 ```{r}
 ggplot(df_onequant, aes(x = bwt)) +
-    geom_histogram(color = "black", fill = "white") +
+    geom_histogram(color = "black", fill = "white",
+                   binwidth =  250, boundary = 1000) +
     labs(title = "Infant birth weight in grams",
          x = "Birth Weight (gm)",
          y = "Count") +
@@ -587,7 +588,7 @@ transition: none
 
 ```{r}
 ggplot(df_onecat_onequant, aes(x = bwt)) +
-    geom_histogram(binwidth = 200,
+    geom_histogram(binwidth =  250, boundary = 1000,
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
@@ -611,7 +612,7 @@ transition: none
 ```{r}
 ggplot(df_onecat_onequant, aes(x = bwt)) +
     geom_histogram(aes(y=(..density..)*200),
-                   binwidth = 200,
+                   binwidth =  250, boundary = 1000,
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
