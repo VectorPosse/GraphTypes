@@ -8,16 +8,100 @@
 Graph Types
 ========================================================
 author: QUARC data visualization workshop
-date: July 7, 2015
 
 
 
 
+
+
+Graphing by hand
+========================================================
+type: section
+
+But...why?
+
+
+How would you graph this?
+========================================================
+
+Number of emergency department visits due to energy drink consumption.
+
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 27 22:06:37 2016 -->
+<table border=1>
+<tr> <th> Year </th> <th> Number of ED visits </th>  </tr>
+  <tr> <td> 2007 </td> <td align="right"> 10056 </td> </tr>
+  <tr> <td> 2009 </td> <td align="right"> 13110 </td> </tr>
+  <tr> <td> 2011 </td> <td align="right"> 20132 </td> </tr>
+   </table>
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+========================================================
+
+![plot of chunk unnamed-chunk-3](GraphTypes-figure/unnamed-chunk-3-1.png)
+
+
+How about this?
+========================================================
+
+Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
+
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 27 22:06:38 2016 -->
+<table border=1>
+<tr> <th> Number of energy drinks in last 30 days </th> <th> Score on PSS </th>  </tr>
+  <tr> <td align="right">   2 </td> <td align="right">  20 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  30 </td> </tr>
+  <tr> <td align="right">  10 </td> <td align="right">  31 </td> </tr>
+  <tr> <td align="right">   2 </td> <td align="right">  17 </td> </tr>
+  <tr> <td align="right">   4 </td> <td align="right">  34 </td> </tr>
+   </table>
+
+<footer style="font-size:20px">
+(Pettit & DeBarr, 2011)
+</footer>
+
+
+========================================================
+
+![plot of chunk unnamed-chunk-5](GraphTypes-figure/unnamed-chunk-5-1.png)
+
+
+And this?
+========================================================
+
+Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
+
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 27 22:06:38 2016 -->
+<table border=1>
+<tr> <th> Year </th> <th> ED visits due to adverse reactions </th> <th> ED visits due to abuse/misuse </th>  </tr>
+  <tr> <td> 2007 </td> <td align="right"> 6996 </td> <td align="right"> 3060 </td> </tr>
+  <tr> <td> 2009 </td> <td align="right"> 8798 </td> <td align="right"> 4312 </td> </tr>
+  <tr> <td> 2011 </td> <td align="right"> 14042 </td> <td align="right"> 6090 </td> </tr>
+   </table>
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+
+========================================================
+
+![plot of chunk unnamed-chunk-7](GraphTypes-figure/unnamed-chunk-7-1.png)
+
+
+========================================================
+
+![plot of chunk unnamed-chunk-8](GraphTypes-figure/unnamed-chunk-8-1.png)
 
 
 Identifying variable types
 ========================================================
-
+type: section
 
 Identifying variable types
 ========================================================
@@ -49,8 +133,10 @@ Numbers are not always quantitative.
 
 > *What is your zip code?*
 
+
 Data set
 ========================================================
+type: section
 
 Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
 
@@ -79,18 +165,19 @@ Mother's race (white, black, or other)
 ```
 Source: local data frame [189 x 1]
 
-    race
-1  Black
-2  Other
-3  White
-4  White
-5  White
-6  Other
-7  White
-8  Other
-9  White
-10 White
-..   ...
+     race
+   (fctr)
+1   Black
+2   Other
+3   White
+4   White
+5   White
+6   Other
+7   White
+8   Other
+9   White
+10  White
+..    ...
 ```
 
 Single categorical variable
@@ -99,8 +186,8 @@ transition: none
 
 * Frequency table
 
-<!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Mon Jul 06 19:44:51 2015 -->
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 27 22:06:39 2016 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -115,7 +202,7 @@ transition:none
 
 * Bar chart
 
-![plot of chunk unnamed-chunk-4](GraphTypes-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-11](GraphTypes-figure/unnamed-chunk-11-1.png)
 
 
 Single categorical variable
@@ -124,7 +211,7 @@ transition:none
 
 * <s>Pie chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-5](GraphTypes-figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png)
 
 
 Single categorical variable
@@ -133,14 +220,21 @@ transition:none
 
 * Relative frequency table
 
-<!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Mon Jul 06 19:44:51 2015 -->
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 27 22:06:39 2016 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
   <tr> <td> Black </td> <td align="right">  26 </td> <td align="right"> 0.14 </td> </tr>
   <tr> <td> Other </td> <td align="right">  67 </td> <td align="right"> 0.35 </td> </tr>
    </table>
+
+
+Single categorical variable
+========================================================
+transition:none
+
+<a href = "http://www.statschat.org.nz/wp-content/uploads/2015/06/devourThePie3.gif" target = "_blank">Click here to see how to improve a pie chart.</a>
 
 
 Single categorical variable
@@ -175,18 +269,19 @@ Infant birth weight in grams
 ```
 Source: local data frame [189 x 1]
 
-    bwt
-1  2523
-2  2551
-3  2557
-4  2594
-5  2600
-6  2622
-7  2637
-8  2637
-9  2663
-10 2665
-..  ...
+     bwt
+   (int)
+1   2523
+2   2551
+3   2557
+4   2594
+5   2600
+6   2622
+7   2637
+8   2637
+9   2663
+10  2665
+..   ...
 ```
 
 
@@ -196,7 +291,7 @@ transition:none
 
 * Histogram
 
-![plot of chunk unnamed-chunk-8](GraphTypes-figure/unnamed-chunk-8-1.png) 
+![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png)
 
 
 Single quantitative variable
@@ -255,18 +350,19 @@ Mother's race and the number of previous premature labors.
 ```
 Source: local data frame [189 x 2]
 
-    race ptl
-1  Black   0
-2  Other   0
-3  White   0
-4  White   0
-5  White   0
-6  Other   0
-7  White   0
-8  Other   0
-9  White   0
-10 White   0
-..   ... ...
+     race    ptl
+   (fctr) (fctr)
+1   Black      0
+2   Other      0
+3   White      0
+4   White      0
+5   White      0
+6   Other      0
+7   White      0
+8   Other      0
+9   White      0
+10  White      0
+..    ...    ...
 ```
 
 
@@ -352,7 +448,7 @@ transition: none
 
 * Side-by-side bar chart (okay)
 
-![plot of chunk unnamed-chunk-13](GraphTypes-figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-20](GraphTypes-figure/unnamed-chunk-20-1.png)
 
 
 Two categorical variables
@@ -361,7 +457,7 @@ transition: none
 
 * Side-by-side bar chart (better)
 
-![plot of chunk unnamed-chunk-14](GraphTypes-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png)
 
 
 Two categorical variables
@@ -370,7 +466,7 @@ transition: none
 
 * <s>Stacked bar chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-15](GraphTypes-figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png)
 
 
 One categorical and one quantitative variable
@@ -387,18 +483,19 @@ Mother's race and infant birth weight in grams
 ```
 Source: local data frame [189 x 2]
 
-    race  bwt
-1  Black 2523
-2  Other 2551
-3  White 2557
-4  White 2594
-5  White 2600
-6  Other 2622
-7  White 2637
-8  Other 2637
-9  White 2663
-10 White 2665
-..   ...  ...
+     race   bwt
+   (fctr) (int)
+1   Black  2523
+2   Other  2551
+3   White  2557
+4   White  2594
+5   White  2600
+6   Other  2622
+7   White  2637
+8   Other  2637
+9   White  2663
+10  White  2665
+..    ...   ...
 ```
 
 
@@ -408,7 +505,7 @@ transition: none
 
 * Side-by-side boxplot
 
-![plot of chunk unnamed-chunk-17](GraphTypes-figure/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-24](GraphTypes-figure/unnamed-chunk-24-1.png)
 
 
 One categorical and one quantitative variable
@@ -417,7 +514,7 @@ transition: none
 
 * Stacked histogram (okay)
 
-![plot of chunk unnamed-chunk-18](GraphTypes-figure/unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-25](GraphTypes-figure/unnamed-chunk-25-1.png)
 
 
 One categorical and one quantitative variable
@@ -426,7 +523,7 @@ transition: none
 
 * Stacked histogram (better)
 
-![plot of chunk unnamed-chunk-19](GraphTypes-figure/unnamed-chunk-19-1.png) 
+![plot of chunk unnamed-chunk-26](GraphTypes-figure/unnamed-chunk-26-1.png)
 
 
 Two quantitative variables
@@ -443,18 +540,19 @@ Mother's age and infant birth weight
 ```
 Source: local data frame [189 x 2]
 
-   age  bwt
-1   19 2523
-2   33 2551
-3   20 2557
-4   21 2594
-5   18 2600
-6   21 2622
-7   22 2637
-8   17 2637
-9   29 2663
-10  26 2665
-.. ...  ...
+     age   bwt
+   (int) (int)
+1     19  2523
+2     33  2551
+3     20  2557
+4     21  2594
+5     18  2600
+6     21  2622
+7     22  2637
+8     17  2637
+9     29  2663
+10    26  2665
+..   ...   ...
 ```
 
 
@@ -464,7 +562,7 @@ transition: none
 
 * Scatterplot
 
-![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png) 
+![plot of chunk unnamed-chunk-28](GraphTypes-figure/unnamed-chunk-28-1.png)
 
 
 Two quantitative variables
@@ -473,16 +571,16 @@ transition: none
 
 * If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
 
-![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png) 
+![plot of chunk unnamed-chunk-29](GraphTypes-figure/unnamed-chunk-29-1.png)
 
 Three or more variables
 ========================================================
 
-![plot of chunk unnamed-chunk-23](GraphTypes-figure/unnamed-chunk-23-1.png) 
+![plot of chunk unnamed-chunk-30](GraphTypes-figure/unnamed-chunk-30-1.png)
 
 
 Three or more variables
 ========================================================
 transition: none
 
-![plot of chunk unnamed-chunk-24](GraphTypes-figure/unnamed-chunk-24-1.png) 
+![plot of chunk unnamed-chunk-31](GraphTypes-figure/unnamed-chunk-31-1.png)

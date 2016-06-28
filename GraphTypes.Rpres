@@ -8,7 +8,6 @@
 Graph Types
 ========================================================
 author: QUARC data visualization workshop
-date: July 7, 2015
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -24,12 +23,162 @@ library(scales)
 library(grid)
 library(gmodels)
 library(ggfortify)
+
+theme_resize <- theme(title = element_text(size = rel(1.5)),
+                      axis.title = element_text(size = rel(1.25)),
+                      axis.text = element_text(size = rel(1)))
+```
+
+
+Graphing by hand
+========================================================
+type: section
+
+But...why?
+
+
+How would you graph this?
+========================================================
+
+Number of emergency department visits due to energy drink consumption.
+
+```{r,  results = "asis"}
+df_ED1_table <- data_frame(Year = factor(c(2007, 2009, 2011)),
+                           `Number of ED visits` = as.integer(c(10056, 13110, 20132)))
+
+df_ED1_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+========================================================
+
+```{r}
+ggplot(df_ED1_table, aes(x = Year, y = `Number of ED visits`)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    labs(title =
+"Number of emergency department visits
+due to energy drink consumption",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.major.x = element_blank()) +
+    theme_resize
+```
+
+
+How about this?
+========================================================
+
+Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
+
+```{r,  results = "asis"}
+df_ED2_table <- data_frame(`Number of energy drinks in last 30 days` =
+                               as.integer(c(2, 1, 10, 2, 4)),
+                           `Score on PSS` = as.integer(c(20, 30, 31, 17, 34)))
+
+df_ED2_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(Pettit & DeBarr, 2011)
+</footer>
+
+
+========================================================
+
+```{r}
+ggplot(df_ED2_table, aes(x = `Number of energy drinks in last 30 days`,
+                         y = `Score on PSS`)) +
+    geom_point(size = 6) +
+    theme_bw() +
+    labs(title =
+"Number of days energy drinks are consumed
+(in last 30 days) and score on
+Perceived Stress Scale",
+         x = "Number of energy drinks in last 30 days",
+         y = "Score on PSS") +
+    scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
+    theme_resize
+```
+
+
+And this?
+========================================================
+
+Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
+
+```{r,  results = "asis"}
+df_ED3_table <- data_frame(Year = factor(c(2007, 2009, 2011)),
+                           `ED visits due to adverse reactions` =
+                               as.integer(c(6996, 8798, 14042)),
+                           `ED visits due to abuse/misuse` =
+                               as.integer(c(3060, 4312, 6090)))
+
+df_ED3_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+
+========================================================
+
+```{r}
+df_ED3 <- data_frame(Year = as.integer(c(2007, 2009, 2011, 2007, 2009, 2011)),
+                     Count = as.integer(c(6996, 8798, 14042, 3060, 4312, 6090)),
+                     `Reason for visit` = factor(c("Adverse reaction",
+                                     "Adverse reaction",
+                                     "Adverse reaction",
+                                     "Abuse/misuse",
+                                     "Abuse/misuse",
+                                     "Abuse/misuse")))
+
+ggplot(df_ED3, aes(x = factor(Year), y = Count, fill = `Reason for visit`)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    theme_bw() +
+    labs(title =
+"Emergency department visits due to
+adverse reactions from or
+abuse/misuse of energy drinks",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.major.x = element_blank()) +
+    theme_resize
+```
+
+
+========================================================
+
+```{r}
+ggplot(df_ED3, aes(x = Year, y = Count, color = `Reason for visit`)) +
+    geom_point(size = 6) +
+    geom_line(size = 2) +
+    theme_bw() +
+    labs(title =
+"Emergency department visits due to
+adverse reactions from or
+abuse/misuse of energy drinks",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.minor.x = element_blank()) +
+    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
+    theme_resize
 ```
 
 
 Identifying variable types
 ========================================================
-
+type: section
 
 Identifying variable types
 ========================================================
@@ -61,8 +210,10 @@ Numbers are not always quantitative.
 
 > *What is your zip code?*
 
+
 Data set
 ========================================================
+type: section
 
 Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
 
@@ -124,12 +275,10 @@ transition:none
 ```{r}
 ggplot(df_onecat, aes(x = race)) +
     geom_bar() +
-    xlab("Race") +
-    ylab("Count") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16))
+    labs(title =  "Mother's race",
+         x = "Race",
+         y = "Count") +
+    theme_resize
 ```
 
 
@@ -162,6 +311,13 @@ df_onecat_table2 %>%
     xtable() %>%
     print(type = "html", include.rownames = FALSE)
 ```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+<a href = "http://www.statschat.org.nz/wp-content/uploads/2015/06/devourThePie3.gif" target = "_blank">Click here to see how to improve a pie chart.</a>
 
 
 Single categorical variable
@@ -210,12 +366,10 @@ transition:none
 ```{r}
 ggplot(df_onequant, aes(x = bwt)) +
     geom_histogram(color = "black", fill = "white") +
-    xlab("Birth Weight (gm)") +
-    ylab("Count") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16))
+    labs(title = "Infant birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Count") +
+    theme_resize
 ```
 
 
@@ -338,15 +492,13 @@ df_twocat_summ <- rbind(df_twocat_summ, df_twocat_fix)
 
 ggplot(df_twocat_summ, aes(x = race, y = count, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Count") +
     scale_fill_discrete(name = "Premature labors") +
-    xlab("Race") +
-    ylab("Count") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16)) +
-    theme(legend.title = element_text(size = 16),
-          legend.text = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -359,15 +511,13 @@ transition: none
 ```{r}
 ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
     geom_bar(stat = "identity", position = "dodge") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Percent") +
     scale_fill_discrete(name = "Premature labors") +
-    xlab("Race") +
-    ylab("Percent") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16)) +
-    theme(legend.title = element_text(size = 16),
-          legend.text = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -380,15 +530,13 @@ transition: none
 ```{r}
 ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
     geom_bar(stat = "identity") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Percent") +
     scale_fill_discrete(name = "Premature labors") +
-    xlab("Race") +
-    ylab("Percent") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16)) +
-    theme(legend.title = element_text(size = 16),
-          legend.text = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -422,12 +570,12 @@ transition: none
 ```{r}
 ggplot(df_onecat_onequant, aes(x = race, y = bwt)) +
     geom_boxplot() +
-    xlab("Race") +
-    ylab("Birth Weight (gm)\n") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(vjust = 1, size = 32),
-          axis.text.y  = element_text(size = 16))
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Race",
+         y = "Birth Weight (gm)\n") +
+    theme_resize
 ```
 
 
@@ -443,14 +591,14 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
-    xlab("Birth Weight (gm)") +
-    ylab("Count") +
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Count\n") +
     theme(strip.text.y = element_text(size = 24)) +
     theme(panel.margin = unit(18, "points")) +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -467,14 +615,14 @@ ggplot(df_onecat_onequant, aes(x = bwt)) +
                    color = "black",
                    fill = "white") +
     facet_grid(race ~ .) +
-    xlab("Birth Weight (gm)") +
-    ylab("Percent") +
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Percent\n") +
     theme(strip.text.y = element_text(size = 24)) +
     theme(panel.margin = unit(18, "points")) +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -506,12 +654,12 @@ transition: none
 ```{r}
 ggplot(df_twoquant, aes(x = age, y = bwt)) +
     geom_point() +
-    xlab("Age") +
-    ylab("Birth Weight (gm)\n") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+    labs(title =
+"Mother's age and
+infant birth weight",
+         x = "Age",
+         y = "Birth Weight (gm)\n") +
+    theme_resize
 ```
 
 
@@ -523,12 +671,10 @@ transition: none
 
 ```{r, fig.width = 10}
 autoplot(co2) +
-    xlab("Year") +
-    ylab("Atmospheric CO2 (ppm)\n") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24))
+    labs(title = "Atmospheric CO2 in ppm (1959 to 1998)",
+         x = "Year",
+         y = "Atmospheric CO2 (ppm)\n") +
+    theme_resize
 ```
 
 Three or more variables
@@ -544,15 +690,11 @@ df_mult <- birthwt %>%
 
 ggplot(df_mult, aes(x = race, y = bwt, fill = smoke)) +
     geom_boxplot() +
-    xlab("Race") +
-    ylab("Birth Weight (gm)\n") +
+    labs(title = "Birthweight by race and smoking",
+         x = "Race",
+         y =  "Birth Weight (gm)\n") +
     scale_fill_discrete(name = "Smoke?") +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(vjust = 1, size = 32),
-          axis.text.y  = element_text(size = 16)) +
-    theme(legend.title = element_text(size = 16),
-          legend.text = element_text(size = 16))
+    theme_resize
 ```
 
 
@@ -564,14 +706,10 @@ transition: none
 ggplot(df_mult, aes(x = age, y = bwt, color = smoke)) +
     geom_point(size = 5) +
     facet_grid(. ~ race) +
-    xlab("Age") +
-    ylab("Birth Weight (gm)\n") +
+    labs(title = "Birthweight by age and smoking",
+         x =  "Age",
+         y =  "Birth Weight (gm)\n") +
     scale_color_discrete(name = "Smoke?") +
     theme(strip.text.x = element_text(size = 24)) +
-    theme(axis.title.x = element_text(size = 32),
-          axis.text.x  = element_text(size = 24)) +
-    theme(axis.title.y = element_text(size = 32),
-          axis.text.y  = element_text(size = 24)) +
-    theme(legend.title = element_text(size = 16),
-          legend.text = element_text(size = 16))
+    theme_resize
 ```
