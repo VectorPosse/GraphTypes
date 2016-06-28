@@ -611,7 +611,7 @@ transition: none
 
 ```{r}
 ggplot(df_onecat_onequant, aes(x = bwt)) +
-    geom_histogram(aes(y=(..density..)*200),
+    geom_histogram(aes(y=(..density..)*250),
                    binwidth =  250, boundary = 1000,
                    color = "black",
                    fill = "white") +

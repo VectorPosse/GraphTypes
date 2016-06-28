@@ -27,7 +27,7 @@ How would you graph this?
 Number of emergency department visits due to energy drink consumption.
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 27 22:18:21 2016 -->
+<!-- Mon Jun 27 22:28:12 2016 -->
 <table border=1>
 <tr> <th> Year </th> <th> Number of ED visits </th>  </tr>
   <tr> <td> 2007 </td> <td align="right"> 10056 </td> </tr>
@@ -50,7 +50,7 @@ How about this?
 Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 27 22:18:21 2016 -->
+<!-- Mon Jun 27 22:28:12 2016 -->
 <table border=1>
 <tr> <th> Number of energy drinks in last 30 days </th> <th> Score on PSS </th>  </tr>
   <tr> <td align="right">   2 </td> <td align="right">  20 </td> </tr>
@@ -76,7 +76,7 @@ And this?
 Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 27 22:18:22 2016 -->
+<!-- Mon Jun 27 22:28:13 2016 -->
 <table border=1>
 <tr> <th> Year </th> <th> ED visits due to adverse reactions </th> <th> ED visits due to abuse/misuse </th>  </tr>
   <tr> <td> 2007 </td> <td align="right"> 6996 </td> <td align="right"> 3060 </td> </tr>
@@ -187,7 +187,7 @@ transition: none
 * Frequency table
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 27 22:18:22 2016 -->
+<!-- Mon Jun 27 22:28:13 2016 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -221,7 +221,7 @@ transition:none
 * Relative frequency table
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 27 22:18:22 2016 -->
+<!-- Mon Jun 27 22:28:13 2016 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
