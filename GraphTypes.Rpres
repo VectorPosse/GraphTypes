@@ -43,7 +43,7 @@ How would you graph this?
 Number of emergency department visits due to energy drink consumption.
 
 ```{r,  results = "asis"}
-df_ED1_table <- data_frame(Year = factor(c(2007, 2009, 2011)),
+df_ED1_table <- data_frame(Year = as.integer(c(2007, 2009, 2011)),
                            `Number of ED visits` = as.integer(c(10056, 13110, 20132)))
 
 df_ED1_table %>%
@@ -58,7 +58,7 @@ df_ED1_table %>%
 ========================================================
 
 ```{r}
-ggplot(df_ED1_table, aes(x = Year, y = `Number of ED visits`)) +
+ggplot(df_ED1_table, aes(x = factor(Year), y = `Number of ED visits`)) +
     geom_bar(stat = "identity") +
     theme_bw() +
     labs(title =
@@ -67,6 +67,24 @@ due to energy drink consumption",
          x = "Year",
          y = "Number of ED visits") +
     theme(panel.grid.major.x = element_blank()) +
+    theme_resize
+```
+
+
+========================================================
+
+```{r}
+ggplot(df_ED1_table, aes(x = Year, y = `Number of ED visits`)) +
+    geom_point(size = 6) +
+    geom_line() +
+    theme_bw() +
+    labs(title =
+"Number of emergency department visits
+due to energy drink consumption",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.minor.x = element_blank()) +
+    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
     theme_resize
 ```
 
