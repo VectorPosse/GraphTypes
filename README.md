@@ -6,6 +6,6 @@ There is a long version that includes several "graphing by hand" exercises first
 
 These presentations are also hosted on RPubs:
 
-(https://rpubs.com/VectorPosse/GraphTypes_long)[Long version]
+[Long version](https://rpubs.com/VectorPosse/GraphTypes_long)
 
-(https://rpubs.com/VectorPosse/GraphTypes_short)[Short version]
+[Short version](https://rpubs.com/VectorPosse/GraphTypes_short)
