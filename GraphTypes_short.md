@@ -14,94 +14,10 @@ author: QUARC data visualization workshop
 
 
 
-Graphing by hand
 ========================================================
 type: section
 
-But...why?
-
-
-How would you graph this?
-========================================================
-
-Number of emergency department visits due to energy drink consumption.
-
-<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Wed Jun 29 10:41:07 2016 -->
-<table border=1>
-<tr> <th> Year </th> <th> Number of ED visits </th>  </tr>
-  <tr> <td align="right"> 2007 </td> <td align="right"> 10056 </td> </tr>
-  <tr> <td align="right"> 2009 </td> <td align="right"> 13110 </td> </tr>
-  <tr> <td align="right"> 2011 </td> <td align="right"> 20132 </td> </tr>
-   </table>
-
-<footer style="font-size:20px">
-(2011 SAMHSA.GOV)
-</footer>
-
-========================================================
-
-![plot of chunk unnamed-chunk-3](GraphTypes-figure/unnamed-chunk-3-1.png)
-
-
-========================================================
-
-![plot of chunk unnamed-chunk-4](GraphTypes-figure/unnamed-chunk-4-1.png)
-
-
-How about this?
-========================================================
-
-Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
-
-<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Wed Jun 29 10:41:08 2016 -->
-<table border=1>
-<tr> <th> Number of energy drinks in last 30 days </th> <th> Score on PSS </th>  </tr>
-  <tr> <td align="right">   2 </td> <td align="right">  20 </td> </tr>
-  <tr> <td align="right">   1 </td> <td align="right">  30 </td> </tr>
-  <tr> <td align="right">  10 </td> <td align="right">  31 </td> </tr>
-  <tr> <td align="right">   2 </td> <td align="right">  17 </td> </tr>
-  <tr> <td align="right">   4 </td> <td align="right">  34 </td> </tr>
-   </table>
-
-<footer style="font-size:20px">
-(Pettit & DeBarr, 2011)
-</footer>
-
-
-========================================================
-
-![plot of chunk unnamed-chunk-6](GraphTypes-figure/unnamed-chunk-6-1.png)
-
-
-And this?
-========================================================
-
-Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
-
-<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Wed Jun 29 10:41:08 2016 -->
-<table border=1>
-<tr> <th> Year </th> <th> ED visits due to adverse reactions </th> <th> ED visits due to abuse/misuse </th>  </tr>
-  <tr> <td> 2007 </td> <td align="right"> 6996 </td> <td align="right"> 3060 </td> </tr>
-  <tr> <td> 2009 </td> <td align="right"> 8798 </td> <td align="right"> 4312 </td> </tr>
-  <tr> <td> 2011 </td> <td align="right"> 14042 </td> <td align="right"> 6090 </td> </tr>
-   </table>
-
-<footer style="font-size:20px">
-(2011 SAMHSA.GOV)
-</footer>
-
-
-========================================================
-
-![plot of chunk unnamed-chunk-8](GraphTypes-figure/unnamed-chunk-8-1.png)
-
-
-========================================================
-
-![plot of chunk unnamed-chunk-9](GraphTypes-figure/unnamed-chunk-9-1.png)
+<img src="QUARC_logo_text.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" height="600px" />
 
 
 Identifying variable types
@@ -168,21 +84,20 @@ Mother's race (white, black, or other)
 
 
 ```
-Source: local data frame [189 x 1]
-
-     race
-   (fctr)
-1   Black
-2   Other
-3   White
-4   White
-5   White
-6   Other
-7   White
-8   Other
-9   White
-10  White
-..    ...
+# A tibble: 189 x 1
+   race 
+   <fct>
+ 1 Black
+ 2 Other
+ 3 White
+ 4 White
+ 5 White
+ 6 Other
+ 7 White
+ 8 Other
+ 9 White
+10 White
+# ... with 179 more rows
 ```
 
 Single categorical variable
@@ -191,8 +106,8 @@ transition: none
 
 * Frequency table
 
-<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Wed Jun 29 10:41:09 2016 -->
+<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 11 20:08:02 2018 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -207,7 +122,7 @@ transition:none
 
 * Bar chart
 
-![plot of chunk unnamed-chunk-12](GraphTypes-figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-5](GraphTypes_short-figure/unnamed-chunk-5-1.png)
 
 
 Single categorical variable
@@ -216,7 +131,7 @@ transition:none
 
 * <s>Pie chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-13](GraphTypes-figure/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-6](GraphTypes_short-figure/unnamed-chunk-6-1.png)
 
 
 Single categorical variable
@@ -225,8 +140,8 @@ transition:none
 
 * Relative frequency table
 
-<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Wed Jun 29 10:41:09 2016 -->
+<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
+<!-- Mon Jun 11 20:08:02 2018 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -272,21 +187,20 @@ Infant birth weight in grams
 
 
 ```
-Source: local data frame [189 x 1]
-
+# A tibble: 189 x 1
      bwt
-   (int)
-1   2523
-2   2551
-3   2557
-4   2594
-5   2600
-6   2622
-7   2637
-8   2637
-9   2663
+   <int>
+ 1  2523
+ 2  2551
+ 3  2557
+ 4  2594
+ 5  2600
+ 6  2622
+ 7  2637
+ 8  2637
+ 9  2663
 10  2665
-..   ...
+# ... with 179 more rows
 ```
 
 
@@ -296,7 +210,7 @@ transition:none
 
 * Histogram
 
-![plot of chunk unnamed-chunk-16](GraphTypes-figure/unnamed-chunk-16-1.png)
+![plot of chunk unnamed-chunk-9](GraphTypes_short-figure/unnamed-chunk-9-1.png)
 
 
 Single quantitative variable
@@ -334,8 +248,8 @@ type: section
 
 There are at least six elements of a plot that can be assigned to variables:
 
-* x-axis
-* y-axis
+* x-axis (horizontal axis)
+* y-axis (vertical axis)
 * facets
 * color/fill
 * size
@@ -353,21 +267,20 @@ Mother's race and the number of previous premature labors.
 
 
 ```
-Source: local data frame [189 x 2]
-
-     race    ptl
-   (fctr) (fctr)
-1   Black      0
-2   Other      0
-3   White      0
-4   White      0
-5   White      0
-6   Other      0
-7   White      0
-8   Other      0
-9   White      0
-10  White      0
-..    ...    ...
+# A tibble: 189 x 2
+   race  ptl  
+   <fct> <fct>
+ 1 Black 0    
+ 2 Other 0    
+ 3 White 0    
+ 4 White 0    
+ 5 White 0    
+ 6 Other 0    
+ 7 White 0    
+ 8 Other 0    
+ 9 White 0    
+10 White 0    
+# ... with 179 more rows
 ```
 
 
@@ -378,33 +291,14 @@ class: small-code
 
 * Contingency table (okay)
 
-
-```
-
- 
-   Cell Contents
-|-------------------------|
-|                       N |
-|-------------------------|
-
- 
-Total Observations in Table:  189 
-
- 
-             | Premature labors 
-        Race |         0 |         1 |         2 |         3 | Row Total | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       White |        82 |        10 |         3 |         1 |        96 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       Black |        22 |         4 |         0 |         0 |        26 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       Other |        55 |        10 |         2 |         0 |        67 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-Column Total |       159 |        24 |         5 |         1 |       189 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-
- 
-```
+<table border=1>
+<tr> <th>  </th> <th> White </th> <th> Black </th> <th> Other </th>  </tr>
+  <tr> <td align="right"> 0 </td> <td align="right"> 82 </td> <td align="right"> 22 </td> <td align="right"> 55 </td> </tr>
+  <tr> <td align="right"> 1 </td> <td align="right"> 10 </td> <td align="right"> 4 </td> <td align="right"> 10 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td align="right"> 3 </td> <td align="right"> 0 </td> <td align="right"> 2 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td align="right"> 1 </td> <td align="right"> 0 </td> <td align="right"> 0 </td> </tr>
+  <tr> <td align="right"> Total </td> <td align="right"> 96 </td> <td align="right"> 26 </td> <td align="right"> 67 </td> </tr>
+   </table>
 
 
 Two categorical variables
@@ -414,37 +308,14 @@ class: small-code
 
 * Contingency table (better)
 
-
-```
-
- 
-   Cell Contents
-|-------------------------|
-|                       N |
-|           N / Row Total |
-|-------------------------|
-
- 
-Total Observations in Table:  189 
-
- 
-             | Premature labors 
-        Race |         0 |         1 |         2 |         3 | Row Total | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       White |        82 |        10 |         3 |         1 |        96 | 
-             |     0.854 |     0.104 |     0.031 |     0.010 |     0.508 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       Black |        22 |         4 |         0 |         0 |        26 | 
-             |     0.846 |     0.154 |     0.000 |     0.000 |     0.138 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-       Other |        55 |        10 |         2 |         0 |        67 | 
-             |     0.821 |     0.149 |     0.030 |     0.000 |     0.354 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-Column Total |       159 |        24 |         5 |         1 |       189 | 
--------------|-----------|-----------|-----------|-----------|-----------|
-
- 
-```
+<table border=1>
+<tr> <th>  </th> <th> White </th> <th> Black </th> <th> Other </th>  </tr>
+  <tr> <td align="right"> 0 </td> <td align="right"> 85.42 </td> <td align="right"> 84.62 </td> <td align="right"> 82.09 </td> </tr>
+  <tr> <td align="right"> 1 </td> <td align="right"> 10.42 </td> <td align="right"> 15.38 </td> <td align="right"> 14.93 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td align="right"> 3.12 </td> <td align="right"> 0.00 </td> <td align="right"> 2.99 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td align="right"> 1.04 </td> <td align="right"> 0.00 </td> <td align="right"> 0.00 </td> </tr>
+  <tr> <td align="right"> Total </td> <td align="right"> 100.00 </td> <td align="right"> 100.00 </td> <td align="right"> 100.00 </td> </tr>
+   </table>
 
 
 Two categorical variables
@@ -453,7 +324,7 @@ transition: none
 
 * Side-by-side bar chart (okay)
 
-![plot of chunk unnamed-chunk-21](GraphTypes-figure/unnamed-chunk-21-1.png)
+![plot of chunk unnamed-chunk-14](GraphTypes_short-figure/unnamed-chunk-14-1.png)
 
 
 Two categorical variables
@@ -462,7 +333,7 @@ transition: none
 
 * Side-by-side bar chart (better)
 
-![plot of chunk unnamed-chunk-22](GraphTypes-figure/unnamed-chunk-22-1.png)
+![plot of chunk unnamed-chunk-15](GraphTypes_short-figure/unnamed-chunk-15-1.png)
 
 
 Two categorical variables
@@ -471,7 +342,7 @@ transition: none
 
 * <s>Stacked bar chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-23](GraphTypes-figure/unnamed-chunk-23-1.png)
+![plot of chunk unnamed-chunk-16](GraphTypes_short-figure/unnamed-chunk-16-1.png)
 
 
 One categorical and one quantitative variable
@@ -486,21 +357,20 @@ Mother's race and infant birth weight in grams
 
 
 ```
-Source: local data frame [189 x 2]
-
-     race   bwt
-   (fctr) (int)
-1   Black  2523
-2   Other  2551
-3   White  2557
-4   White  2594
-5   White  2600
-6   Other  2622
-7   White  2637
-8   Other  2637
-9   White  2663
-10  White  2665
-..    ...   ...
+# A tibble: 189 x 2
+   race    bwt
+   <fct> <int>
+ 1 Black  2523
+ 2 Other  2551
+ 3 White  2557
+ 4 White  2594
+ 5 White  2600
+ 6 Other  2622
+ 7 White  2637
+ 8 Other  2637
+ 9 White  2663
+10 White  2665
+# ... with 179 more rows
 ```
 
 
@@ -510,7 +380,7 @@ transition: none
 
 * Side-by-side boxplot
 
-![plot of chunk unnamed-chunk-25](GraphTypes-figure/unnamed-chunk-25-1.png)
+![plot of chunk unnamed-chunk-18](GraphTypes_short-figure/unnamed-chunk-18-1.png)
 
 
 One categorical and one quantitative variable
@@ -519,7 +389,7 @@ transition: none
 
 * Stacked histogram (okay)
 
-![plot of chunk unnamed-chunk-26](GraphTypes-figure/unnamed-chunk-26-1.png)
+![plot of chunk unnamed-chunk-19](GraphTypes_short-figure/unnamed-chunk-19-1.png)
 
 
 One categorical and one quantitative variable
@@ -528,7 +398,7 @@ transition: none
 
 * Stacked histogram (better)
 
-![plot of chunk unnamed-chunk-27](GraphTypes-figure/unnamed-chunk-27-1.png)
+![plot of chunk unnamed-chunk-20](GraphTypes_short-figure/unnamed-chunk-20-1.png)
 
 
 Two quantitative variables
@@ -543,21 +413,20 @@ Mother's age and infant birth weight
 
 
 ```
-Source: local data frame [189 x 2]
-
+# A tibble: 189 x 2
      age   bwt
-   (int) (int)
-1     19  2523
-2     33  2551
-3     20  2557
-4     21  2594
-5     18  2600
-6     21  2622
-7     22  2637
-8     17  2637
-9     29  2663
+   <int> <int>
+ 1    19  2523
+ 2    33  2551
+ 3    20  2557
+ 4    21  2594
+ 5    18  2600
+ 6    21  2622
+ 7    22  2637
+ 8    17  2637
+ 9    29  2663
 10    26  2665
-..   ...   ...
+# ... with 179 more rows
 ```
 
 
@@ -567,7 +436,7 @@ transition: none
 
 * Scatterplot
 
-![plot of chunk unnamed-chunk-29](GraphTypes-figure/unnamed-chunk-29-1.png)
+![plot of chunk unnamed-chunk-22](GraphTypes_short-figure/unnamed-chunk-22-1.png)
 
 
 Two quantitative variables
@@ -576,16 +445,16 @@ transition: none
 
 * If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
 
-![plot of chunk unnamed-chunk-30](GraphTypes-figure/unnamed-chunk-30-1.png)
+![plot of chunk unnamed-chunk-23](GraphTypes_short-figure/unnamed-chunk-23-1.png)
 
 Three or more variables
 ========================================================
 
-![plot of chunk unnamed-chunk-31](GraphTypes-figure/unnamed-chunk-31-1.png)
+![plot of chunk unnamed-chunk-24](GraphTypes_short-figure/unnamed-chunk-24-1.png)
 
 
 Three or more variables
 ========================================================
 transition: none
 
-![plot of chunk unnamed-chunk-32](GraphTypes-figure/unnamed-chunk-32-1.png)
+![plot of chunk unnamed-chunk-25](GraphTypes_short-figure/unnamed-chunk-25-1.png)

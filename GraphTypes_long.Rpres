@@ -1,0 +1,745 @@
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+
+Graph Types
+========================================================
+author: QUARC data visualization workshop
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(xtable)
+library(mosaic)
+library(MASS)
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(grid)
+library(ggfortify)
+library(zoo)
+
+theme_resize <- theme(title = element_text(size = rel(1.5)),
+                      axis.title = element_text(size = rel(1.25)),
+                      axis.text = element_text(size = rel(1)))
+```
+
+
+========================================================
+type: section
+
+```{r, out.height = "600px"}
+knitr::include_graphics("QUARC_logo_text.jpg")
+```
+
+
+Graphing by hand
+========================================================
+type: section
+
+But...why?
+
+
+How would you graph this?
+========================================================
+
+Number of emergency department visits due to energy drink consumption.
+
+```{r,  results = "asis"}
+df_ED1_table <- data_frame(Year = as.integer(c(2007, 2009, 2011)),
+    `Number of ED visits` = as.integer(c(10056, 13110, 20132)))
+
+df_ED1_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+========================================================
+
+```{r}
+ggplot(df_ED1_table, aes(x = factor(Year), y = `Number of ED visits`)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    labs(title =
+"Number of emergency department visits
+due to energy drink consumption",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.major.x = element_blank()) +
+    theme_resize
+```
+
+
+========================================================
+
+```{r}
+ggplot(df_ED1_table, aes(x = Year, y = `Number of ED visits`)) +
+    geom_point(size = 6) +
+    geom_line() +
+    theme_bw() +
+    labs(title =
+"Number of emergency department visits
+due to energy drink consumption",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.minor.x = element_blank()) +
+    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
+    theme_resize
+```
+
+
+How about this?
+========================================================
+
+Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
+
+```{r,  results = "asis"}
+df_ED2_table <- data_frame(`Number of energy drinks in last 30 days` =
+    as.integer(c(2, 1, 10, 2, 4)),
+    `Score on PSS` = as.integer(c(20, 30, 31, 17, 34)))
+
+df_ED2_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(Pettit & DeBarr, 2011)
+</footer>
+
+
+========================================================
+
+```{r}
+ggplot(df_ED2_table, aes(x = `Number of energy drinks in last 30 days`,
+                         y = `Score on PSS`)) +
+    geom_point(size = 6) +
+    theme_bw() +
+    labs(title =
+"Number of days energy drinks are consumed
+(in last 30 days) and score on
+Perceived Stress Scale",
+         x = "Number of energy drinks in last 30 days",
+         y = "Score on PSS") +
+    scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
+    theme_resize
+```
+
+
+And this?
+========================================================
+
+Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
+
+```{r,  results = "asis"}
+df_ED3_table <- data_frame(Year = factor(c(2007, 2009, 2011)),
+                           `ED visits due to adverse reactions` =
+                               as.integer(c(6996, 8798, 14042)),
+                           `ED visits due to abuse/misuse` =
+                               as.integer(c(3060, 4312, 6090)))
+
+df_ED3_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+<footer style="font-size:20px">
+(2011 SAMHSA.GOV)
+</footer>
+
+
+========================================================
+
+```{r}
+df_ED3 <- data_frame(Year = as.integer(c(2007, 2009, 2011, 2007, 2009, 2011)),
+                     Count = as.integer(c(6996, 8798, 14042, 3060, 4312, 6090)),
+                     `Reason for visit` = factor(c("Adverse reaction",
+                                     "Adverse reaction",
+                                     "Adverse reaction",
+                                     "Abuse/misuse",
+                                     "Abuse/misuse",
+                                     "Abuse/misuse")))
+
+ggplot(df_ED3, aes(x = factor(Year), y = Count, fill = `Reason for visit`)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    theme_bw() +
+    labs(title =
+"Emergency department visits due to
+adverse reactions from or
+abuse/misuse of energy drinks",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.major.x = element_blank()) +
+    theme_resize
+```
+
+
+========================================================
+
+```{r}
+ggplot(df_ED3, aes(x = Year, y = Count, color = `Reason for visit`)) +
+    geom_point(size = 6) +
+    geom_line(size = 2) +
+    theme_bw() +
+    labs(title =
+"Emergency department visits due to
+adverse reactions from or
+abuse/misuse of energy drinks",
+         x = "Year",
+         y = "Number of ED visits") +
+    theme(panel.grid.minor.x = element_blank()) +
+    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
+    theme_resize
+```
+
+
+Identifying variable types
+========================================================
+type: section
+
+Identifying variable types
+========================================================
+transition: none
+
+* Categorical (nominal, qualitative, factor)
+
+Classifies data by category.
+
+> color, species, sex
+
+* Quantitative (numeric, scale, interval/ratio)
+
+Numerical measurements, usually with meaningful units.
+
+> height, GDP, score
+
+
+Identifying variable types
+========================================================
+transition: none
+
+**CAREFUL!**
+
+Numbers are not always quantitative.
+
+> *Do you own a car?*
+>> 0 = "No", 1 = "Yes"
+
+> *What is your zip code?*
+
+
+Data set
+========================================================
+type: section
+
+Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
+
+189 women measured on 10 variables.
+
+
+Single variable
+========================================================
+type: section
+
+* Single variables usually won't answer very interesting questions by themselves.
+* Graphs of single variables are often valuable for exploring your data, but generally not suitable for inclusion in the final product.
+
+
+Single categorical variable
+========================================================
+
+
+Single categorical variable
+========================================================
+transition: none
+
+Mother's race (white, black, or other)
+
+```{r}
+df_onecat <- birthwt %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other"))) %>%
+    tbl_df()
+
+df_onecat
+```
+
+Single categorical variable
+========================================================
+transition: none
+
+* Frequency table
+
+```{r, results = 'asis'}
+df_onecat_table <- df_onecat %>%
+    group_by(race) %>%
+    summarise(count = n())
+
+colnames(df_onecat_table) <- c("Race", "Count")
+
+df_onecat_table %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+* Bar chart
+
+```{r}
+ggplot(df_onecat, aes(x = race)) +
+    geom_bar() +
+    labs(title = "Mother's race",
+         x = "Race",
+         y = "Count") +
+    theme_resize
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+* <s>Pie chart</s> **Danger! Danger!**
+
+```{r}
+pie(df_onecat_table$Count, labels = df_onecat_table$Race, cex = 2)
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+* Relative frequency table
+
+```{r, results = 'asis'}
+df_onecat_table2 <- df_onecat %>%
+    group_by(race) %>%
+    summarise(count = n()) %>%
+    mutate(Percent = count / sum(count))
+
+colnames(df_onecat_table2) <- c("Race", "Count", "Percent")
+
+df_onecat_table2 %>%
+    xtable() %>%
+    print(type = "html", include.rownames = FALSE)
+```
+
+
+Single categorical variable
+========================================================
+transition:none
+
+<a href = "http://www.statschat.org.nz/wp-content/uploads/2015/06/devourThePie3.gif" target = "_blank">Click here to see how to improve a pie chart.</a>
+
+
+Single categorical variable
+========================================================
+transition:none
+
+* Why do pie charts suck?
+
+> ["Pie Charts Are the Worst"](http://www.businessinsider.com/pie-charts-are-the-worst-2013-6)
+
+> ["Countdown of Top 10 Reasons to Never Ever Use a Pie Chart"](https://blogs.oracle.com/experience/entry/countdown_of_top_10_reasons_to_never_ever_use_a_pie_chart)
+
+> ["Save the Pies for Dessert"](http://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf)
+
+* And to be fair, one guy who defends pie charts:
+
+> ["Why Tufte is Flat-Out Wrong about Pie Charts"](http://speakingppt.com/2013/03/18/why-tufte-is-flat-out-wrong-about-pie-charts/)
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+Infant birth weight in grams
+
+```{r}
+df_onequant <- birthwt %>%
+    transmute(bwt = bwt) %>%
+    tbl_df()
+
+df_onequant
+```
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+* Histogram
+
+```{r}
+ggplot(df_onequant, aes(x = bwt)) +
+    geom_histogram(color = "black", fill = "white",
+                   binwidth =  250, boundary = 1000) +
+    labs(title = "Infant birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Count") +
+    theme_resize
+```
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+* Tabular summaries
+
+("Five-number summary" or other quantiles)
+
+```{r, results = 'asis'}
+df_onequant_table <- df_onequant$bwt %>%
+    quantile(probs = c(0, 0.05, 0.25, 0.5, 0.75, 0.95, 1)) %>%
+    as.data.frame()
+
+colnames(df_onequant_table) <- c("Birth Weight (gm)")
+
+df_onequant_table <- df_onequant_table %>%
+    xtable(digits = 0) %>%
+    print(type = "html", comment = FALSE)
+```
+
+
+Single quantitative variable
+========================================================
+transition:none
+
+* A bunch of other types I don't prefer:
+
+> boxplot, stem-and-leaf plot, dotplot
+
+
+Multiple variables
+========================================================
+type: section
+
+There are at least six elements of a plot that can be assigned to variables:
+
+* x-axis (horizontal axis)
+* y-axis (vertical axis)
+* facets
+* color/fill
+* size
+* shape (e.g., dots vs crosses, solid vs dashed lines, etc.)
+
+Two categorical variables
+========================================================
+
+
+Two categorical variables
+========================================================
+transition: none
+
+Mother's race and the number of previous premature labors.
+
+```{r}
+df_twocat <- birthwt %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
+              ptl = factor(ptl))  %>%
+    tbl_df()
+
+df_twocat
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+class: small-code
+
+* Contingency table (okay)
+
+```{r, results = 'asis'}
+twocat_table <- tally(ptl ~ race, data = df_twocat, margins = TRUE)
+
+twocat_table <- twocat_table %>%
+    xtable(digits = 0) %>%
+    print(type = "html", comment = FALSE)
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+class: small-code
+
+* Contingency table (better)
+
+```{r,  results = "asis"}
+twocat_table2 <- tally(ptl ~ race, data = df_twocat,
+                      margins = TRUE, format = "percent")
+
+twocat_table2 <- twocat_table2 %>%
+    xtable(digits = 2) %>%
+    print(type = "html", comment = FALSE)
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+
+* Side-by-side bar chart (okay)
+
+```{r}
+df_twocat_summ <- df_twocat %>%
+    group_by(race, ptl) %>%
+    summarise(count = n()) %>%
+    mutate(percentage = count / sum(count)) %>%
+    tbl_df()
+
+## Add zero counts to missing categories to fix spacing in bar graph.
+
+df_twocat_fix <- data_frame(race = c("Black", "Black", "Other"),
+                            ptl = c(2, 3, 3),
+                            count = c(0, 0, 0),
+                            percentage = c(0, 0, 0))
+
+df_twocat_summ <- rbind(df_twocat_summ, df_twocat_fix)
+
+ggplot(df_twocat_summ, aes(x = race, y = count, fill = ptl)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Count") +
+    scale_fill_discrete(name = "Premature labors") +
+    theme_resize
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+
+* Side-by-side bar chart (better)
+
+```{r}
+ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Percent") +
+    scale_fill_discrete(name = "Premature labors") +
+    theme_resize
+```
+
+
+Two categorical variables
+========================================================
+transition: none
+
+* <s>Stacked bar chart</s> **Danger! Danger!**
+
+```{r}
+ggplot(df_twocat_summ, aes(x = race, y = percentage, fill = ptl)) +
+    geom_bar(stat = "identity") +
+    labs(title =
+"Mother's race and the number
+of previous premature labors",
+         x = "Race",
+         y = "Percent") +
+    scale_fill_discrete(name = "Premature labors") +
+    theme_resize
+```
+
+
+One categorical and one quantitative variable
+========================================================
+
+
+One categorical and one quantitative variable
+========================================================
+transition: none
+
+Mother's race and infant birth weight in grams
+
+```{r}
+df_onecat_onequant <- birthwt %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
+              bwt = bwt) %>%
+    tbl_df()
+
+df_onecat_onequant
+```
+
+
+One categorical and one quantitative variable
+========================================================
+transition: none
+
+* Side-by-side boxplot
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = race, y = bwt)) +
+    geom_boxplot() +
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Race",
+         y = "Birth Weight (gm)\n") +
+    theme_resize
+```
+
+
+One categorical and one quantitative variable
+========================================================
+transition: none
+
+* Stacked histogram (okay)
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = bwt)) +
+    geom_histogram(binwidth =  250, boundary = 1000,
+                   color = "black",
+                   fill = "white") +
+    facet_grid(race ~ .) +
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Count\n") +
+    theme(strip.text.y = element_text(size = 24)) +
+    theme(panel.margin = unit(18, "points")) +
+    theme_resize
+```
+
+
+One categorical and one quantitative variable
+========================================================
+transition: none
+
+* Stacked histogram (better)
+
+```{r}
+ggplot(df_onecat_onequant, aes(x = bwt)) +
+    geom_histogram(aes(y=(..density..)*250),
+                   binwidth =  250, boundary = 1000,
+                   color = "black",
+                   fill = "white") +
+    facet_grid(race ~ .) +
+    labs(title =
+"Mother's race and infant
+birth weight in grams",
+         x = "Birth Weight (gm)",
+         y = "Percent\n") +
+    theme(strip.text.y = element_text(size = 24)) +
+    theme(panel.margin = unit(18, "points")) +
+    theme_resize
+```
+
+
+Two quantitative variables
+========================================================
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+Mother's age and infant birth weight
+
+```{r}
+df_twoquant <- birthwt %>%
+    transmute(age = age, bwt = bwt) %>%
+    tbl_df()
+
+df_twoquant
+```
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+* Scatterplot
+
+```{r}
+ggplot(df_twoquant, aes(x = age, y = bwt)) +
+    geom_point() +
+    labs(title =
+"Mother's age and
+infant birth weight",
+         x = "Age",
+         y = "Birth Weight (gm)\n") +
+    theme_resize
+```
+
+
+Two quantitative variables
+========================================================
+transition: none
+
+* If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
+
+```{r, fig.width = 10}
+autoplot(co2) +
+    labs(title = "Atmospheric CO2 in ppm (1959 to 1998)",
+         x = "Year",
+         y = "Atmospheric CO2 (ppm)\n") +
+    theme_resize
+```
+
+Three or more variables
+========================================================
+
+```{r}
+df_mult <- birthwt %>%
+    transmute(race = factor(as.character(race),
+                            labels = c("White", "Black", "Other")),
+              bwt = bwt,
+              smoke = factor(smoke, labels = c("No", "Yes")),
+              age = age)
+
+ggplot(df_mult, aes(x = race, y = bwt, fill = smoke)) +
+    geom_boxplot() +
+    labs(title = "Birthweight by race and smoking",
+         x = "Race",
+         y =  "Birth Weight (gm)\n") +
+    scale_fill_discrete(name = "Smoke?") +
+    theme_resize
+```
+
+
+Three or more variables
+========================================================
+transition: none
+
+```{r, fig.width = 15}
+ggplot(df_mult, aes(x = age, y = bwt, color = smoke)) +
+    geom_point(size = 5) +
+    facet_grid(. ~ race) +
+    labs(title = "Birthweight by age and smoking",
+         x =  "Age",
+         y =  "Birth Weight (gm)\n") +
+    scale_color_discrete(name = "Smoke?") +
+    theme(strip.text.x = element_text(size = 24)) +
+    theme_resize
+```

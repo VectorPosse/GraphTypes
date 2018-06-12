@@ -16,13 +16,14 @@ opts_chunk$set(echo = FALSE)
 
 ```{r}
 library(xtable)
+library(mosaic)
 library(MASS)
 library(dplyr)
 library(ggplot2)
 library(scales)
 library(grid)
-library(gmodels)
 library(ggfortify)
+library(zoo)
 
 theme_resize <- theme(title = element_text(size = rel(1.5)),
                       axis.title = element_text(size = rel(1.25)),
@@ -30,167 +31,11 @@ theme_resize <- theme(title = element_text(size = rel(1.5)),
 ```
 
 
-Graphing by hand
 ========================================================
 type: section
 
-But...why?
-
-
-How would you graph this?
-========================================================
-
-Number of emergency department visits due to energy drink consumption.
-
-```{r,  results = "asis"}
-df_ED1_table <- data_frame(Year = as.integer(c(2007, 2009, 2011)),
-                           `Number of ED visits` = as.integer(c(10056, 13110, 20132)))
-
-df_ED1_table %>%
-    xtable() %>%
-    print(type = "html", include.rownames = FALSE)
-```
-
-<footer style="font-size:20px">
-(2011 SAMHSA.GOV)
-</footer>
-
-========================================================
-
-```{r}
-ggplot(df_ED1_table, aes(x = factor(Year), y = `Number of ED visits`)) +
-    geom_bar(stat = "identity") +
-    theme_bw() +
-    labs(title =
-"Number of emergency department visits
-due to energy drink consumption",
-         x = "Year",
-         y = "Number of ED visits") +
-    theme(panel.grid.major.x = element_blank()) +
-    theme_resize
-```
-
-
-========================================================
-
-```{r}
-ggplot(df_ED1_table, aes(x = Year, y = `Number of ED visits`)) +
-    geom_point(size = 6) +
-    geom_line() +
-    theme_bw() +
-    labs(title =
-"Number of emergency department visits
-due to energy drink consumption",
-         x = "Year",
-         y = "Number of ED visits") +
-    theme(panel.grid.minor.x = element_blank()) +
-    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
-    theme_resize
-```
-
-
-How about this?
-========================================================
-
-Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
-
-```{r,  results = "asis"}
-df_ED2_table <- data_frame(`Number of energy drinks in last 30 days` =
-                               as.integer(c(2, 1, 10, 2, 4)),
-                           `Score on PSS` = as.integer(c(20, 30, 31, 17, 34)))
-
-df_ED2_table %>%
-    xtable() %>%
-    print(type = "html", include.rownames = FALSE)
-```
-
-<footer style="font-size:20px">
-(Pettit & DeBarr, 2011)
-</footer>
-
-
-========================================================
-
-```{r}
-ggplot(df_ED2_table, aes(x = `Number of energy drinks in last 30 days`,
-                         y = `Score on PSS`)) +
-    geom_point(size = 6) +
-    theme_bw() +
-    labs(title =
-"Number of days energy drinks are consumed
-(in last 30 days) and score on
-Perceived Stress Scale",
-         x = "Number of energy drinks in last 30 days",
-         y = "Score on PSS") +
-    scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
-    theme_resize
-```
-
-
-And this?
-========================================================
-
-Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
-
-```{r,  results = "asis"}
-df_ED3_table <- data_frame(Year = factor(c(2007, 2009, 2011)),
-                           `ED visits due to adverse reactions` =
-                               as.integer(c(6996, 8798, 14042)),
-                           `ED visits due to abuse/misuse` =
-                               as.integer(c(3060, 4312, 6090)))
-
-df_ED3_table %>%
-    xtable() %>%
-    print(type = "html", include.rownames = FALSE)
-```
-
-<footer style="font-size:20px">
-(2011 SAMHSA.GOV)
-</footer>
-
-
-========================================================
-
-```{r}
-df_ED3 <- data_frame(Year = as.integer(c(2007, 2009, 2011, 2007, 2009, 2011)),
-                     Count = as.integer(c(6996, 8798, 14042, 3060, 4312, 6090)),
-                     `Reason for visit` = factor(c("Adverse reaction",
-                                     "Adverse reaction",
-                                     "Adverse reaction",
-                                     "Abuse/misuse",
-                                     "Abuse/misuse",
-                                     "Abuse/misuse")))
-
-ggplot(df_ED3, aes(x = factor(Year), y = Count, fill = `Reason for visit`)) +
-    geom_bar(stat = "identity", position = "dodge") +
-    theme_bw() +
-    labs(title =
-"Emergency department visits due to
-adverse reactions from or
-abuse/misuse of energy drinks",
-         x = "Year",
-         y = "Number of ED visits") +
-    theme(panel.grid.major.x = element_blank()) +
-    theme_resize
-```
-
-
-========================================================
-
-```{r}
-ggplot(df_ED3, aes(x = Year, y = Count, color = `Reason for visit`)) +
-    geom_point(size = 6) +
-    geom_line(size = 2) +
-    theme_bw() +
-    labs(title =
-"Emergency department visits due to
-adverse reactions from or
-abuse/misuse of energy drinks",
-         x = "Year",
-         y = "Number of ED visits") +
-    theme(panel.grid.minor.x = element_blank()) +
-    scale_x_continuous(breaks = c(2007, 2009, 2011)) +
-    theme_resize
+```{r, out.height = "600px"}
+knitr::include_graphics("QUARC_logo_text.jpg")
 ```
 
 
@@ -293,7 +138,7 @@ transition:none
 ```{r}
 ggplot(df_onecat, aes(x = race)) +
     geom_bar() +
-    labs(title =  "Mother's race",
+    labs(title = "Mother's race",
          x = "Race",
          y = "Count") +
     theme_resize
@@ -428,8 +273,8 @@ type: section
 
 There are at least six elements of a plot that can be assigned to variables:
 
-* x-axis
-* y-axis
+* x-axis (horizontal axis)
+* y-axis (vertical axis)
 * facets
 * color/fill
 * size
@@ -463,13 +308,12 @@ class: small-code
 
 * Contingency table (okay)
 
-```{r}
-Race <- df_twocat$race
-`Premature labors` <- df_twocat$ptl
+```{r, results = 'asis'}
+twocat_table <- tally(ptl ~ race, data = df_twocat, margins = TRUE)
 
-CrossTable(x = Race, y = `Premature labors`,
-           prop.r = FALSE, prop.c = FALSE, prop.t = FALSE, prop.chisq = FALSE,
-           format = "SAS")
+twocat_table <- twocat_table %>%
+    xtable(digits = 0) %>%
+    print(type = "html", comment = FALSE)
 ```
 
 
@@ -480,10 +324,13 @@ class: small-code
 
 * Contingency table (better)
 
-```{r}
-CrossTable(x = Race, y = `Premature labors`,
-           prop.r = TRUE, prop.c = FALSE, prop.t = FALSE, prop.chisq = FALSE,
-           format = "SAS")
+```{r,  results = "asis"}
+twocat_table2 <- tally(ptl ~ race, data = df_twocat,
+                      margins = TRUE, format = "percent")
+
+twocat_table2 <- twocat_table2 %>%
+    xtable(digits = 2) %>%
+    print(type = "html", comment = FALSE)
 ```
 
 
