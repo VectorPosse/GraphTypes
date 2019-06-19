@@ -39,6 +39,22 @@ knitr::include_graphics("QUARC_logo_text.jpg")
 ```
 
 
+Data preparation
+========================================================
+type: section
+
+Data preparation
+========================================================
+transition: none
+
+Make sure you're data is "tidy":
+
+* Observations are rows.
+* Variables are columns.
+* First row (and only first row) consists of variable names.
+* No extra stuff outside the rectangle.
+
+
 Identifying variable types
 ========================================================
 type: section
@@ -81,6 +97,15 @@ type: section
 Risk factors associated with low infant birth weight, collected at Baystate Medical Center, Springfield, Mass during 1986.
 
 189 women measured on 10 variables.
+
+Data set
+========================================================
+transition: none
+
+```{r, results = "asis"}
+print(xtable(birthwt), type = "html",
+      include.rownames = FALSE)
+```
 
 
 Single variable

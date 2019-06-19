@@ -32,8 +32,8 @@ How would you graph this?
 
 Number of emergency department visits due to energy drink consumption.
 
-<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 11 20:06:19 2018 -->
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:03 2019 -->
 <table border=1>
 <tr> <th> Year </th> <th> Number of ED visits </th>  </tr>
   <tr> <td align="right"> 2007 </td> <td align="right"> 10056 </td> </tr>
@@ -60,8 +60,8 @@ How about this?
 
 Number of days energy drinks are consumed (in last 30 days) and score on Perceived Stress Scale.
 
-<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 11 20:06:20 2018 -->
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:04 2019 -->
 <table border=1>
 <tr> <th> Number of energy drinks in last 30 days </th> <th> Score on PSS </th>  </tr>
   <tr> <td align="right">   2 </td> <td align="right">  20 </td> </tr>
@@ -86,8 +86,8 @@ And this?
 
 Emergency department visits due to adverse reactions from or abuse/misuse of energy drinks.
 
-<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 11 20:06:20 2018 -->
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:04 2019 -->
 <table border=1>
 <tr> <th> Year </th> <th> ED visits due to adverse reactions </th> <th> ED visits due to abuse/misuse </th>  </tr>
   <tr> <td> 2007 </td> <td align="right"> 6996 </td> <td align="right"> 3060 </td> </tr>
@@ -108,6 +108,22 @@ Emergency department visits due to adverse reactions from or abuse/misuse of ene
 ========================================================
 
 ![plot of chunk unnamed-chunk-10](GraphTypes_long-figure/unnamed-chunk-10-1.png)
+
+
+Data preparation
+========================================================
+type: section
+
+Data preparation
+========================================================
+transition: none
+
+Make sure you're data is "tidy":
+
+* Observations are rows.
+* Variables are columns.
+* First row (and only first row) consists of variable names.
+* No extra stuff outside the rectangle.
 
 
 Identifying variable types
@@ -153,6 +169,205 @@ Risk factors associated with low infant birth weight, collected at Baystate Medi
 
 189 women measured on 10 variables.
 
+Data set
+========================================================
+transition: none
+
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:05 2019 -->
+<table border=1>
+<tr> <th> low </th> <th> age </th> <th> lwt </th> <th> race </th> <th> smoke </th> <th> ptl </th> <th> ht </th> <th> ui </th> <th> ftv </th> <th> bwt </th>  </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 182 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2523 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  33 </td> <td align="right"> 155 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2551 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 105 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2557 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 108 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right"> 2594 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 107 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2600 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 124 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2622 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 118 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2637 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 103 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2637 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 123 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2663 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  26 </td> <td align="right"> 113 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2665 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right">  95 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2722 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 150 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2733 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right">  95 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2751 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right"> 107 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right"> 2750 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 100 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2769 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 100 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2769 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  15 </td> <td align="right">  98 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2778 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 118 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2782 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2807 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2821 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  32 </td> <td align="right"> 121 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2835 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  31 </td> <td align="right"> 100 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   3 </td> <td align="right"> 2835 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  36 </td> <td align="right"> 202 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2836 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2863 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right"> 2877 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 167 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2877 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 122 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2906 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 150 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2920 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  26 </td> <td align="right"> 168 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2920 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 113 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2920 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 113 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2920 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right">  90 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2948 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  35 </td> <td align="right"> 121 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2948 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 155 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2977 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 125 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2977 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 140 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2977 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 138 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2977 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  27 </td> <td align="right"> 124 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2922 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  31 </td> <td align="right"> 215 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3005 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  33 </td> <td align="right"> 109 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3033 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 185 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3042 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 189 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3062 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 130 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3062 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 160 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3062 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right">  90 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 3062 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right">  90 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 3062 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  32 </td> <td align="right"> 132 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   4 </td> <td align="right"> 3080 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 132 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3090 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 115 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3090 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right">  85 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3090 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3100 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 128 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3104 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3132 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right">  95 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3147 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 115 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3175 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right"> 110 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3175 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 110 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 3203 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right"> 153 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3203 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 103 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3203 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 119 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3225 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 119 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3225 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 119 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3232 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 110 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3232 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 140 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3234 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  26 </td> <td align="right"> 133 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3260 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 169 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right"> 3274 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 115 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3274 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 250 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   6 </td> <td align="right"> 3303 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 141 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right"> 3317 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 158 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3317 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 112 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3317 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  31 </td> <td align="right"> 150 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3321 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 115 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3331 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right"> 112 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3374 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right"> 135 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3374 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 229 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3402 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 140 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3416 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  32 </td> <td align="right"> 134 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   4 </td> <td align="right"> 3430 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 121 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3444 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 190 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3459 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 131 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3460 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  32 </td> <td align="right"> 170 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3473 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right"> 110 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3544 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 127 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3487 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 123 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3544 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  17 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3572 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 105 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3572 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3586 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  36 </td> <td align="right"> 175 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3600 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 125 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3614 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 133 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3614 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 134 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3629 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 235 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3629 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right">  95 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 3637 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right"> 135 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3643 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 135 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3651 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 154 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3651 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 147 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3651 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 147 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3651 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right"> 137 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3699 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 110 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3728 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 184 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3756 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 110 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3770 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  23 </td> <td align="right"> 110 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3770 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3770 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 241 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3790 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  30 </td> <td align="right"> 112 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3799 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 169 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3827 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3856 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right"> 170 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   4 </td> <td align="right"> 3860 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  32 </td> <td align="right"> 186 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3860 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  18 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3884 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  29 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3884 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  33 </td> <td align="right"> 117 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right"> 3912 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 170 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3940 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 134 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3941 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  14 </td> <td align="right"> 135 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3941 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  28 </td> <td align="right"> 130 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 3969 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 3983 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  16 </td> <td align="right">  95 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3997 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  20 </td> <td align="right"> 158 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 3997 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  26 </td> <td align="right"> 160 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 4054 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  21 </td> <td align="right"> 115 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 4054 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  22 </td> <td align="right"> 129 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 4111 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  25 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 4153 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  31 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 4167 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  35 </td> <td align="right"> 170 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 4174 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  19 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 4238 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  24 </td> <td align="right"> 116 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 4593 </td> </tr>
+  <tr> <td align="right">   0 </td> <td align="right">  45 </td> <td align="right"> 123 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 4990 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  28 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 709 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  29 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right"> 1021 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  34 </td> <td align="right"> 187 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1135 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right"> 105 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1330 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right">  85 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 1474 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  27 </td> <td align="right"> 150 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1588 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  23 </td> <td align="right">  97 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right"> 1588 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  24 </td> <td align="right"> 128 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 1701 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  24 </td> <td align="right"> 132 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1729 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  21 </td> <td align="right"> 165 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 1790 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  32 </td> <td align="right"> 105 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1818 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  19 </td> <td align="right">  91 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 1885 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right"> 115 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1893 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  16 </td> <td align="right"> 130 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 1899 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right">  92 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1928 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 150 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 1928 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  21 </td> <td align="right"> 200 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   2 </td> <td align="right"> 1928 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  24 </td> <td align="right"> 155 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1936 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  21 </td> <td align="right"> 103 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 1970 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 125 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2055 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right">  89 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2055 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  19 </td> <td align="right"> 102 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2082 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  19 </td> <td align="right"> 112 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2084 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  26 </td> <td align="right"> 117 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2084 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  24 </td> <td align="right"> 138 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2100 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  17 </td> <td align="right"> 130 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2125 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 120 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2126 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  22 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right"> 2187 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  27 </td> <td align="right"> 130 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2187 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right">  80 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2211 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  17 </td> <td align="right"> 110 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2225 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  25 </td> <td align="right"> 105 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2240 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 109 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2240 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  18 </td> <td align="right"> 148 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2282 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  18 </td> <td align="right"> 110 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2296 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 121 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2296 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  21 </td> <td align="right"> 100 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   4 </td> <td align="right"> 2301 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  26 </td> <td align="right">  96 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2325 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  31 </td> <td align="right"> 102 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2353 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  15 </td> <td align="right"> 110 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2353 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  23 </td> <td align="right"> 187 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2367 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 122 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2381 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  24 </td> <td align="right"> 105 </td> <td align="right">   2 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2381 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  15 </td> <td align="right"> 115 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right"> 2381 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  23 </td> <td align="right"> 120 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2410 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  30 </td> <td align="right"> 142 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2410 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  22 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2410 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  17 </td> <td align="right"> 120 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2414 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  23 </td> <td align="right"> 110 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2424 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  17 </td> <td align="right"> 120 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2438 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  26 </td> <td align="right"> 154 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right"> 2442 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  20 </td> <td align="right"> 105 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2450 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  26 </td> <td align="right"> 190 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2466 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  14 </td> <td align="right"> 101 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2466 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  28 </td> <td align="right">  95 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2466 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  14 </td> <td align="right"> 100 </td> <td align="right">   3 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   2 </td> <td align="right"> 2495 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  23 </td> <td align="right">  94 </td> <td align="right">   3 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2495 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  17 </td> <td align="right"> 142 </td> <td align="right">   2 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   0 </td> <td align="right"> 2495 </td> </tr>
+  <tr> <td align="right">   1 </td> <td align="right">  21 </td> <td align="right"> 130 </td> <td align="right">   1 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   1 </td> <td align="right">   0 </td> <td align="right">   3 </td> <td align="right"> 2495 </td> </tr>
+   </table>
+
 
 Single variable
 ========================================================
@@ -196,8 +411,8 @@ transition: none
 
 * Frequency table
 
-<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 11 20:06:21 2018 -->
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:05 2019 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> </tr>
@@ -212,7 +427,7 @@ transition:none
 
 * Bar chart
 
-![plot of chunk unnamed-chunk-13](GraphTypes_long-figure/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-14](GraphTypes_long-figure/unnamed-chunk-14-1.png)
 
 
 Single categorical variable
@@ -221,7 +436,7 @@ transition:none
 
 * <s>Pie chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-14](GraphTypes_long-figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](GraphTypes_long-figure/unnamed-chunk-15-1.png)
 
 
 Single categorical variable
@@ -230,8 +445,8 @@ transition:none
 
 * Relative frequency table
 
-<!-- html table generated in R 3.5.0 by xtable 1.8-2 package -->
-<!-- Mon Jun 11 20:06:21 2018 -->
+<!-- html table generated in R 3.6.0 by xtable 1.8-4 package -->
+<!-- Tue Jun 18 16:32:05 2019 -->
 <table border=1>
 <tr> <th> Race </th> <th> Count </th> <th> Percent </th>  </tr>
   <tr> <td> White </td> <td align="right">  96 </td> <td align="right"> 0.51 </td> </tr>
@@ -300,7 +515,7 @@ transition:none
 
 * Histogram
 
-![plot of chunk unnamed-chunk-17](GraphTypes_long-figure/unnamed-chunk-17-1.png)
+![plot of chunk unnamed-chunk-18](GraphTypes_long-figure/unnamed-chunk-18-1.png)
 
 
 Single quantitative variable
@@ -414,7 +629,7 @@ transition: none
 
 * Side-by-side bar chart (okay)
 
-![plot of chunk unnamed-chunk-22](GraphTypes_long-figure/unnamed-chunk-22-1.png)
+![plot of chunk unnamed-chunk-23](GraphTypes_long-figure/unnamed-chunk-23-1.png)
 
 
 Two categorical variables
@@ -423,7 +638,7 @@ transition: none
 
 * Side-by-side bar chart (better)
 
-![plot of chunk unnamed-chunk-23](GraphTypes_long-figure/unnamed-chunk-23-1.png)
+![plot of chunk unnamed-chunk-24](GraphTypes_long-figure/unnamed-chunk-24-1.png)
 
 
 Two categorical variables
@@ -432,7 +647,7 @@ transition: none
 
 * <s>Stacked bar chart</s> **Danger! Danger!**
 
-![plot of chunk unnamed-chunk-24](GraphTypes_long-figure/unnamed-chunk-24-1.png)
+![plot of chunk unnamed-chunk-25](GraphTypes_long-figure/unnamed-chunk-25-1.png)
 
 
 One categorical and one quantitative variable
@@ -470,7 +685,7 @@ transition: none
 
 * Side-by-side boxplot
 
-![plot of chunk unnamed-chunk-26](GraphTypes_long-figure/unnamed-chunk-26-1.png)
+![plot of chunk unnamed-chunk-27](GraphTypes_long-figure/unnamed-chunk-27-1.png)
 
 
 One categorical and one quantitative variable
@@ -479,7 +694,7 @@ transition: none
 
 * Stacked histogram (okay)
 
-![plot of chunk unnamed-chunk-27](GraphTypes_long-figure/unnamed-chunk-27-1.png)
+![plot of chunk unnamed-chunk-28](GraphTypes_long-figure/unnamed-chunk-28-1.png)
 
 
 One categorical and one quantitative variable
@@ -488,7 +703,7 @@ transition: none
 
 * Stacked histogram (better)
 
-![plot of chunk unnamed-chunk-28](GraphTypes_long-figure/unnamed-chunk-28-1.png)
+![plot of chunk unnamed-chunk-29](GraphTypes_long-figure/unnamed-chunk-29-1.png)
 
 
 Two quantitative variables
@@ -526,7 +741,7 @@ transition: none
 
 * Scatterplot
 
-![plot of chunk unnamed-chunk-30](GraphTypes_long-figure/unnamed-chunk-30-1.png)
+![plot of chunk unnamed-chunk-31](GraphTypes_long-figure/unnamed-chunk-31-1.png)
 
 
 Two quantitative variables
@@ -535,16 +750,16 @@ transition: none
 
 * If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
 
-![plot of chunk unnamed-chunk-31](GraphTypes_long-figure/unnamed-chunk-31-1.png)
+![plot of chunk unnamed-chunk-32](GraphTypes_long-figure/unnamed-chunk-32-1.png)
 
 Three or more variables
 ========================================================
 
-![plot of chunk unnamed-chunk-32](GraphTypes_long-figure/unnamed-chunk-32-1.png)
+![plot of chunk unnamed-chunk-33](GraphTypes_long-figure/unnamed-chunk-33-1.png)
 
 
 Three or more variables
 ========================================================
 transition: none
 
-![plot of chunk unnamed-chunk-33](GraphTypes_long-figure/unnamed-chunk-33-1.png)
+![plot of chunk unnamed-chunk-34](GraphTypes_long-figure/unnamed-chunk-34-1.png)
