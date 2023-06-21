@@ -1,0 +1,475 @@
+---
+title: "Graph types"
+author: "Sean Raleigh <br> Westminster University"
+execute: 
+  echo: false
+format:
+    revealjs:
+        theme: sky
+        incremental: false
+        embed-resources: true
+---
+
+
+# Data preparation
+
+```{r}
+library(palmerpenguins)
+library(gt)
+library(tidyverse)
+library(ggbeeswarm)
+library(viridis)
+library(janitor)
+library(tsibble)
+
+theme_resize <- theme(title = element_text(size = rel(1.5)),
+                      axis.title = element_text(size = rel(1.25)),
+                      axis.text = element_text(size = rel(1)))
+```
+
+
+## Data preparation
+
+- Make sure your data is "tidy":
+    - Observations are rows.
+    - Variables are columns.
+    - Every cell is a single value.
+    - First row (and only first row) consists of variable names.
+    - No extra stuff outside the rectangle.
+
+## Data preparation
+
+Measurements for penguins in the Palmer Archipelago, Antarctica.
+
+```{r}
+penguins <- penguins %>%
+    drop_na()
+penguins %>%
+    head(n = 20) %>%
+    gt()
+```
+
+
+# Identifying variable types
+
+
+## Identifying variable types
+
+- Categorical (qualitative, nominal, factor)
+
+Classifies data by category.
+
+> color, species, sex
+
+- Numerical (quantitative, scale, interval/ratio)
+
+Numerical measurements, usually with meaningful units.
+
+> height, GDP, score
+
+
+## Identifying variable types
+
+**CAREFUL!**
+
+Numbers are not always numerical.
+
+> *Do you own a car?*
+>> 0 = "No", 1 = "Yes"
+
+> *What is your zip code?*
+
+
+
+# Single variable
+
+- Single variables usually won't answer very interesting questions by themselves.
+- Graphs of single variables are often valuable for exploring your data, but generally not suitable for inclusion in the final product.
+
+
+## Single categorical variable
+
+Penguin species.
+
+```{r}
+penguins %>%
+    select(species) %>%
+    head(n = 20) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Single categorical variable
+
+- Frequency table
+
+```{r}
+tabyl(penguins, species) %>%
+    select(-percent) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Single categorical variable
+
+- Bar chart
+
+```{r}
+ggplot(penguins, aes(x = species)) +
+    geom_bar() +
+    labs(title = "Penguin species",
+         x = "Species",
+         y = "Count") +
+    theme_resize
+```
+
+
+## Single categorical variable
+
+- ~~Pie chart~~ **Danger! Danger!**
+
+```{r}
+penguins %>%
+    count(species) %>%
+    rename(Species = species) %>%
+    ggplot(aes(x = "", y = n, fill = Species)) +
+        geom_bar(stat = "identity", width = 1) +
+        coord_polar("y") +
+        theme_void() +
+        scale_fill_viridis(discrete = TRUE)
+```
+
+
+## Single categorical variable
+
+- Relative frequency table
+
+```{r}
+tabyl(penguins, species) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Single categorical variable
+
+<a href = "http://www.statschat.org.nz/wp-content/uploads/2015/06/devourThePie3.gif" target = "_blank">Click here to see how to improve a pie chart.</a>
+
+
+## Single numerical variable
+
+Penguin body mass in grams.
+
+```{r}
+penguins %>%
+    select(body_mass_g) %>%
+    head(n = 20) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Single numerical variable
+
+- Histogram
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g)) +
+    geom_histogram(color = "black", fill = "white",
+                   binwidth =  250, boundary = 1000) +
+    labs(title = "Penguin body mass (g)",
+         x = "Body mass (g)",
+         y = "Count") +
+    theme_resize
+```
+
+
+## Single numerical variable
+
+- Tabular summaries
+
+"Five-number summary"
+
+```{r}
+penguins %>%
+    reframe(Percentiles = c("0%", "25%", "50%", "75%", "100%"),
+            Body_mass = quantile(body_mass_g)) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Single numerical variable
+
+- A bunch of other types I don't prefer:
+
+> boxplot, stem-and-leaf plot, dotplot
+
+
+
+# Multiple variables
+
+There are at least six elements of a plot that can be assigned to variables:
+
+- x-axis (horizontal axis)
+- y-axis (vertical axis)
+- facets
+- color/fill
+- size
+- shape (e.g., dots vs crosses, solid vs dashed lines, etc.)
+
+
+## Two categorical variables
+
+Penguin species and island.
+
+```{r}
+penguins %>%
+    select(species, island) %>%
+    head(n = 20) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Two categorical variables
+
+- Contingency table (okay)
+
+```{r}
+tabyl(penguins, species, island) %>%
+    adorn_totals() %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Two categorical variables
+
+- Contingency table (better)
+
+```{r}
+tabyl(penguins, species, island) %>%
+    adorn_totals() %>%
+    adorn_percentages("col") %>%
+    adorn_pct_formatting() %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Two categorical variables
+
+- Side-by-side bar chart (okay)
+
+```{r}
+penguins %>%
+    count(species, island) %>%
+    bind_rows(tribble(~species, ~island, ~n, # Fix spacing
+                      "Gentoo", "Torgersen", 0)) %>%
+    ggplot(aes(x = island, y = n, fill = species)) +
+        geom_bar(stat = "identity", position = "dodge") +
+        labs(title = "Penguin species distribution by island",
+         x = "Island",
+         y = "Count",
+         fill = "Species") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+
+## Two categorical variables
+
+- Side-by-side bar chart (better)
+
+```{r}
+penguins %>%
+    count(species, island) %>%
+    group_by(island) %>%
+    mutate(prop = n / sum(n)) %>%
+    bind_rows(tribble(~species, ~island, ~n, # Fix spacing
+                      "Gentoo", "Torgersen", 0)) %>%
+    ggplot(aes(x = island, y = prop, fill = species)) +
+        geom_bar(stat = "identity", position = "dodge") +
+        labs(title = "Penguin species distribution by island",
+         x = "Island",
+         y = "Count",
+         fill = "Species") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+
+
+## Two categorical variables
+
+- Stacked bar chart (okay)
+
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+    geom_bar() +
+    labs(title = "Penguin species distribution by island",
+         x = "Island",
+         y = "Count",
+         fill = "Species") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+    geom_bar(position = "fill") +
+    labs(title = "Penguin species distribution by island",
+         x = "Island",
+         y = "Count",
+         fill = "Species") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+
+## One categorical and one numerical variable
+
+Penguin species and body mass (g).
+
+```{r}
+penguins %>%
+    select(species, body_mass_g) %>%
+    head(n = 20) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## One categorical and one numerical variable
+
+- Side-by-side boxplot (okay)
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+    geom_boxplot() +
+    labs(title = "Penguin body mass (g) by species",
+         x = "Species",
+         y = "Body mass (g)") +
+    theme_resize
+```
+
+
+## One categorical and one numerical variable
+
+- Stacked histogram (better)
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g)) +
+    geom_histogram(binwidth =  250, boundary = 1000,
+                   color = "black",
+                   fill = "white") +
+    facet_grid(rows = vars(species)) +
+    labs(title = "Penguin body mass (g) by species",
+         y = "Count",
+         x = "Body mass (g)") +
+    theme_resize
+```
+
+
+## One categorical and one numerical variable
+
+- ~~Dynamite plot~~ **Danger! Danger!**
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g, fill = species)) +
+    stat_summary(geom = "errorbar", fun.data = "mean_sdl",
+                 width = .5, size = 1) +
+    stat_summary(geom = "bar", fun.y = "mean") +
+    labs(title = "Penguin body mass (g) by species",
+         x = "Species",
+         y = "Mean body mass (g)") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+## One categorical and one numerical variable
+
+- Beeswarm (better)
+
+```{r}
+ggplot(penguins, aes(y = body_mass_g, x = species)) +
+    geom_quasirandom() +
+    labs(title = "Penguin body mass (g) by species",
+         y = "Count",
+         x = "Body mass (g)") +
+    theme_resize
+```
+
+
+## Two numerical variables
+
+Penguin flipper length (mm) and body mass (g).
+
+```{r}
+penguins %>%
+    select(flipper_length_mm, body_mass_g) %>%
+    head(n = 20) %>%
+    gt() %>%
+    tab_options(table.font.size = "75%")
+```
+
+
+## Two numerical variables
+
+- Scatterplot
+
+```{r}
+ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) +
+    geom_point() +
+    labs(title = "Penguin flipper length (mm) by\nbody mass (g)",
+         y = "Flipper length (mm)",
+         x = "Body mass (g)") +
+    theme_resize
+```
+
+
+## Two numerical variables
+
+- If one variable is ordered (like time) and there is only one observation of y for each x value, use a lineplot.
+
+```{r}
+ggplot(as_tsibble(co2), aes(y = value, x = index)) +
+    geom_line() +
+    labs(title = "Atmospheric CO2 in ppm (1959 to 1998)\nMauna Loa",
+         x = "Year",
+         y = "Atmospheric CO2 (ppm)\n") +
+    theme_resize
+```
+
+
+## Three or more variables
+
+```{r}
+ggplot(penguins, aes(x = island, y = body_mass_g, fill = species)) +
+    geom_boxplot() +
+    labs(x = "Island",
+         y =  "Body mass (g)",
+         fill = "Species") +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_resize
+```
+
+
+## Three or more variables
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = sex)) +
+    geom_point() +
+    facet_grid(rows = vars(species),
+               cols = vars(island)) +
+    labs(y = "Flipper length (mm)",
+         x = "Body mass (g)",
+         color = "Sex") +
+    scale_color_viridis(discrete = TRUE) +
+    theme_dark() +
+    theme_resize +
+    theme(axis.text = element_text(size = rel(0.75)))
+```

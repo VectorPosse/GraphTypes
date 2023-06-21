@@ -1,11 +1,7 @@
 # GraphTypes
 
-This document describes the types of graphs and charts that are appropriate for different combinations of variables. (This forms part of the QUARC data visualization workshop.)
+This document describes the types of graphs and charts that are appropriate for different combinations of variables.
 
-There is a long version that includes several "graphing by hand" exercises first. The short version skips this stuff, but otherwise is exactly the same.
+This presentations is also hosted on RPubs:
 
-These presentations are also hosted on RPubs:
-
-[Long version](https://rpubs.com/VectorPosse/GraphTypes_long)
-
-[Short version](https://rpubs.com/VectorPosse/GraphTypes_short)
+[https://rpubs.com/VectorPosse/GraphTypes_short](https://rpubs.com/VectorPosse/GraphTypes_short)
