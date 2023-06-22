@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1056697/8a33270c07584dd18e34d0cbb82eb319
+bundleId: https://api.rpubs.com/api/v1/document/1056697/8a33270c07584dd18e34d0cbb82eb319
+url: http://rpubs.com/VectorPosse/1056697
+when: 1687397398.05353
+lastSyncTime: 1687397398.05355

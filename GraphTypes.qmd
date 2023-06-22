@@ -56,16 +56,12 @@ penguins %>%
 ## Identifying variable types
 
 - Categorical (qualitative, nominal, factor)
-
-Classifies data by category.
-
-> color, species, sex
+    - Classifies data by category.
+    - color, species, sex
 
 - Numerical (quantitative, scale, interval/ratio)
-
-Numerical measurements, usually with meaningful units.
-
-> height, GDP, score
+    - Numerical measurements, usually with meaningful units.
+    - height, GDP, score
 
 
 ## Identifying variable types
@@ -74,10 +70,9 @@ Numerical measurements, usually with meaningful units.
 
 Numbers are not always numerical.
 
-> *Do you own a car?*
->> 0 = "No", 1 = "Yes"
-
-> *What is your zip code?*
+- *Do you own a car?*
+    - 0 = "No", 1 = "Yes"
+- *What is your zip code?*
 
 
 
@@ -317,6 +312,10 @@ ggplot(penguins, aes(x = island, fill = species)) +
     scale_fill_viridis(discrete = TRUE) +
     theme_resize
 ```
+
+## Two categorical variables
+
+- Stacked bar chart (okay)
 
 ```{r}
 ggplot(penguins, aes(x = island, fill = species)) +
